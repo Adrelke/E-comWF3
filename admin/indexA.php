@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once('C:\xampp\htdocs\E-comWF3/bdd.php');
+require_once('../bdd.php');
 
 if(!empty($_POST)){
 
