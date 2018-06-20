@@ -7,48 +7,60 @@
 
     <style>
         #map {
-            height: 400px;
-            width: 80%;
+            height: 500px;
+            width: 100%;
         }
     </style>
     <title>Contact</title>
 </head>
 <body>
+<?php
+include ('header.php');
+?>
+<br>
+<br>
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-            <form method="post" action="contact.php">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nom</label>
-                    <input type="type" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div class="col-md-7">
+            <div class="card">
+                <h5 class="card-header">Formulaire de Contact</h5>
+                <div class="card-body">
+                    <form method="post" action="contact.php">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nom</label>
+                            <input type="type" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Sujet</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Message</label>
+                            <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Sujet</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-            </form>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h3>My Google Maps Demo</h3>
+        <div class="col-md-5">
+            <h3>Ou nous trouver</h3>
             <div id="map"></div>
         </div>
     </div>
 </div>
-
+<?php
+include ('footer.php');
+?>
 <script>
     function initMap() {
         var uluru = {lat: 44.8422703, lng: -0.5826098000000002};
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
+            zoom: 15,
             center: uluru
         });
         var marker = new google.maps.Marker({
