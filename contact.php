@@ -29,13 +29,13 @@ include ('header.php');
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nom</label>
                             <input type="type" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
+                                 </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
+                                     <label for="exampleInputEmail1">Email</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Sujet</label>
+                                          <label for="exampleInputPassword1">Sujet</label>
                             <input type="password" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
@@ -58,7 +58,7 @@ include ('footer.php');
 ?>
 <script>
     function initMap() {
-        var uluru = {lat: 44.8422703, lng: -0.5826098000000002};
+        var uluru = {lat: 25.728150, lng: -80.242527};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: uluru
