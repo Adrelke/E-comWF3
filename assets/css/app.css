@@ -1,0 +1,14 @@
+/* pour retirer la couleur grise de base de bootstrap afficher sur la navbar */
+.bg-light {
+    background-color: #E6EE9C !important;
+}
+
+body{
+
+    font-family: 'Nunito', sans-serif !important;
+
+}
+
+header {
+    background: #E6EE9C;
+}
