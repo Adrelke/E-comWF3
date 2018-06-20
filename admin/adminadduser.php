@@ -92,46 +92,62 @@ if(!empty($_POST)){
     
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="../accueil.php">Accueil<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav_item active">
-        <a class="nav-link" href="adminadduser.php?deconnexion">deconnexion<span class="sr-only">(current)</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+
+<?php
+if(!empty($_SESSION)){
+    if($_SESSION['role'] == 'ROLE_ADMIN'){
+
+    ?>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../accueil.php">Accueil<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav_item active">
+            <a class="nav-link" href="adminadduser.php?deconnexion">deconnexion<span class="sr-only">(current)</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
 
 
-<div class="container">
-<form method="POST">
-  <div class="form-group">
-    <label for="exampleInputPassword1">Insérer le nickname utilisateur</label>
-    <input name="nickname" type="text" class="form-control" id="exampleInputPassword1" placeholder="nickname">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Insérer l'email utilisateur</label>
-    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Insérer le password utilisateur</label>
-    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-      <select name="role" class="form-control">
-          <option value="ROLE_ADMIN">Rôle Administrateur</option>
-          <option value="ROLE_VENDOR">Rôle vendeur</option>
-          <option value="ROLE_USER">Rôle utilisateur</option>
-      </select>
-  </div>
-  <button type="submit" class="btn btn-primary">Inscrire</button>
-</form>
-</div>
+    <div class="container">
+    <form method="POST">
+      <div class="form-group">
+        <label for="exampleInputPassword1">Insérer le nickname utilisateur</label>
+        <input name="nickname" type="text" class="form-control" id="exampleInputPassword1" placeholder="nickname">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Insérer l'email utilisateur</label>
+        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Insérer le password utilisateur</label>
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-group">
+          <select name="role" class="form-control">
+              <option value="ROLE_ADMIN">Rôle Administrateur</option>
+              <option value="ROLE_VENDOR">Rôle vendeur</option>
+              <option value="ROLE_USER">Rôle utilisateur</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Inscrire</button>
+    </form>
+    </div>
 
+    <?php
+    }       
+}else{
+    echo 'Erreur';
+}
+?>
 
 </body>
 </html>
+
+
