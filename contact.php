@@ -1,5 +1,44 @@
 <?php
 session_start(); 
+
+include_once('bdd.php');
+
+if(!empty($_POST)){
+    $errors = [];
+
+    if(empty($_POST['nom'])){
+        $errors[] = "Merci de renseigner votre nom.";
+    }
+
+    if(empty($_POST['email'])){
+        $errors[] = "Merci de renseigner votre email.";
+    }
+
+    if(empty($_POST['message']) && strlen($_POST['message']) < 20){
+        $errors[] = "Votre message doit faire plus de 20 caractères.";
+    }
+
+    if(empty($errors)){
+        $resultat = $connexion->prepare('INSERT INTO messages(name, email, subject, content) VALUES(:name, :email, :subject, :content)');
+        $resultat->bindValue(':name', htmlspecialchars($_POST['nom']));
+        $resultat->bindValue(':email', htmlspecialchars($_POST['email']));
+        $resultat->bindValue(':subject', htmlspecialchars($_POST['subject']));
+        $resultat->bindValue(':content', htmlspecialchars($_POST['message']));
+        $resultat->execute();
+        header('Location: contact.php?submit');
+    } else {
+        echo implode('</br>', $errors);
+    }
+
+}
+
+if(isset($_GET['submit'])){
+    ?>
+    <div class="alert alert-success" role="alert">
+        Message bien envoyé !
+    </div>
+    <?php
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,12 +77,12 @@ include ('header.php');
                             <input type="type" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                  </div>
                         <div class="form-group">
-                                     <label for="exampleInputEmail1">Email</label>
+                            <label for="exampleInputEmail1">Email</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                                          <label for="exampleInputPassword1">Sujet</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <label for="exampleInputPassword1">Sujet</label>
+                            <input type="text" class="form-control" name="subject" id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Message</label>

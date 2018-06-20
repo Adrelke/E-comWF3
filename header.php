@@ -35,7 +35,7 @@
                         <?php
                     } elseif($_SESSION['role'] == "ROLE_VENDOR"){
                         ?>
-                        <a class="option" href="#"><i class="fas fa-cogs fa-2x"></i></a>
+                        <a class="option" href="./admin/from_ajouter_article.php"><i class="fas fa-cogs fa-2x"></i></a>
                         <?php
                     }
                     ?>
