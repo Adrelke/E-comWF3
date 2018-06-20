@@ -2,7 +2,7 @@
     <!-- Footer -->
     <footer class="page-footer font-small blue-grey lighten-5 mt-4">
 
-        <div style="background-color: #FF9800;">
+        <div style="background-color: #fff;">
             <div class="container">
 
                 <!-- Grid row-->
