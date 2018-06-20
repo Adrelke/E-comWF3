@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <style>
         #map {
@@ -50,8 +50,8 @@ include ('header.php');
             </div>
         </div>
         <div class="col-md-5">
-            <h3>Ou nous trouver</h3>
-            <div id="map"></div>
+            <h3 class="text-center">Ou nous trouver</h3>
+            <div id="map" ></div>
         </div>
     </div>
 </div>
