@@ -17,9 +17,6 @@ session_start();
   </head>
   <body>
     <style>
-          body{
-              background: #E6EE9C ;
-          }
         
           .card {
               box-shadow: 0px 0px 25px black;
