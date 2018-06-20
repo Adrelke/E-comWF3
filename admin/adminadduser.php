@@ -58,8 +58,8 @@ if(!empty($_POST)){
         $resultat->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
         $resultat->bindValue(':role', $post['role']);
         if($resultat->execute()){
+            // header('Location: adminadduser.php');
             echo '<p class="alert alert-success">inscription OK!</p>';
-            header('Location: adminadduser.php');
         }
         
     }
