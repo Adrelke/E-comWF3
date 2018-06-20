@@ -29,10 +29,20 @@
                     <?php
                 }
                 if(isset($_SESSION['pseudo'])){
+                    if($_SESSION['role'] == "ROLE_ADMIN"){
+                        ?>
+                        <a class="option" href="./admin/optsadmin.php"><i class="fas fa-cogs fa-2x"></i></a>
+                        <?php
+                    } elseif($_SESSION['role'] == "ROLE_VENDOR"){
+                        ?>
+                        <a class="option" href="#"><i class="fas fa-cogs fa-2x"></i></a>
+                        <?php
+                    }
                     ?>
-                    <p><?= $_SESSION['pseudo']?></p>
+                    
                     <a class="btn btn-danger" href="accueil.php?deconnexion">Deconnexion</a>
                     <?php
+                    
                 }
                 ?>
             </div>
