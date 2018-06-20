@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d622812-a89d-422c-817e-89d583146bbf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/form_ajouter_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/form_ajouter_article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/optsadmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/optsadmin.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/contact.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="412">
-              <caret line="84" column="7" lean-forward="true" selection-end-line="84" selection-end-column="7" />
+              <caret line="88" column="7" lean-forward="true" selection-end-line="88" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -49,11 +49,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/form_ajouter_article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
+            <state relative-caret-position="425">
               <caret line="94" column="61" lean-forward="true" selection-start-line="94" selection-start-column="61" selection-end-line="94" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="optsadmin.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/optsadmin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="50" column="58" lean-forward="true" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -79,6 +88,7 @@
         <option value="$PROJECT_DIR$/contact.php" />
         <option value="$PROJECT_DIR$/footer.php" />
         <option value="$PROJECT_DIR$/form_ajouter_article.php" />
+        <option value="$PROJECT_DIR$/admin/optsadmin.php" />
       </list>
     </option>
   </component>
@@ -160,12 +170,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529480936849</updated>
-      <workItem from="1529480938251" duration="18602000" />
+      <workItem from="1529480938251" duration="19224000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18602000" />
+    <option name="totallyTimeSpent" value="19224000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -247,7 +257,7 @@
     <entry file="file://$PROJECT_DIR$/contact.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="412">
-          <caret line="84" column="7" lean-forward="true" selection-end-line="84" selection-end-column="7" />
+          <caret line="88" column="7" lean-forward="true" selection-end-line="88" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -277,8 +287,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/form_ajouter_article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
+        <state relative-caret-position="425">
           <caret line="94" column="61" lean-forward="true" selection-start-line="94" selection-start-column="61" selection-end-line="94" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/optsadmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="50" column="58" lean-forward="true" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
         </state>
       </provider>
     </entry>

@@ -48,7 +48,7 @@ session_start();
                       <div class="card-body">
                         <h5 class="card-title">Ajout/Modif articles</h5>
                         <p class="card-text"><i class="fas fa-edit fa-7x"></i></p>
-                        <a href="#" class="card-link"><i class="fas fa-arrow-right fa-2x"></i></a>
+                        <a href="form_ajouter_article.php" class="card-link"><i class="fas fa-arrow-right fa-2x"></i></a>
                       </div>
                     </div>
                   </div>
