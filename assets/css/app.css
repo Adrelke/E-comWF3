@@ -20,3 +20,14 @@ header {
 .blocinfo{
     padding-left: 200px;
 }
+
+.option{
+    margin-right: 20px;
+}
+.option i {
+    color: black;
+}
+
+.option i:hover {
+    color: lightgrey;
+}
