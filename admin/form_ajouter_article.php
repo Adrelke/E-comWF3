@@ -1,5 +1,5 @@
 <?php
-    include('bdd.php');
+    include('../bdd.php');
     session_start();
 ?>
 
@@ -10,15 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/contact.css">
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/contact.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
 
     <title>Contact</title>
 </head>
 <body>
 <?php
-include ('header.php');
+include ('../header.php');
 ?>
 <br>
 <br>
@@ -107,7 +107,7 @@ include ('header.php');
                     $errors[] = 'Mauvais extension, Les extensiones autorisees sont: jpg,png et jpeg';
                 }else{
                     //tout est bon, donc je peux enregistrer l'image dans mon dossier
-                    move_uploaded_file($_FILES['photo']['tmp_name'],'assets/img/'.$newName.'.'.$extension);
+                    move_uploaded_file($_FILES['photo']['tmp_name'],'../assets/img/'.$newName.'.'.$extension);
                 }
 
                 //donner le valeur a dispo
@@ -130,7 +130,7 @@ include ('header.php');
                     //si $resultat->execute() == true , l'article a bien été enregistré
                     if ($result->execute()) {
                         ?>
-                        <div class="alert alert-primary" role="alert">
+                        <div class="alert alert-success" role="alert">
                             Produit bien ajoute
                         </div>
                         <?php
@@ -156,7 +156,7 @@ include ('header.php');
 <br>
 <?php
 
-include ('footer.php');
+include ('../footer.php');
 ?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
