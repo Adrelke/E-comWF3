@@ -22,7 +22,7 @@ if(!empty($_POST)){
     
     if(!empty($_POST['password'])){
         if($_POST['password'] == $utilisateur[0]['password'] && $utilisateur[0]['role'] == 'ROLE_ADMIN' ){
-            header('Location: adminadduser.php');
+            header('Location: optsadmin.php');
             $_SESSION['email'] = htmlspecialchars($_POST['email']);
             $_SESSION['pseudo'] = $utilisateur[0]['nickname'];
             $_SESSION['role'] = $utilisateur[0]['role'];;
