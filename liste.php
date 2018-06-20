@@ -42,7 +42,7 @@ $categories = $select_categories->fetchAll();
                     </div>
                     <div class="form-group">
                         <label for="max-price">Prix maximum</label>        
-                        <input class="form-control" name="max-price" type="number">
+                        <input class="form-control" name="max-price" type="number" min="0">
                     </div>
                 </form>
             </div>
