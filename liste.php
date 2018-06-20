@@ -102,33 +102,34 @@ if(empty($errors)) {
         </div>
     </section>
 
-<section class="container">
-    <div class="card">
-        <div class="card-header py-3 px-5">
-            <h4 class='no-margin'><?php echo count($products); ?> résultat<?php if(count($products) > 1){echo 's';} ?></h4>
-        </div>
-        <div class="card-body p-5 d-flex flex-column">
-            <?php
-                foreach ($products as $product) {
-                    ?>
-                    <div class="d-flex flex-row my-4">
-                        <div class="col-4"><img class="img-product" src="assets/img/<?= $product['photo'] ?>" alt="photo du produit"></div>
-                        <div class="col-6 p-5">
-                            <h3><?= $product['name'] ?></h3>
-                            <small><?= $product['category'] ?></small>
-                            
+<?php if(empty($errors)){ ?>
+    <section class="container">
+        <div class="card">
+            <div class="card-header py-3 px-5">
+                <h4 class='no-margin'><?php echo count($products); ?> résultat<?php if(count($products) > 1){echo 's';} ?></h4>
+            </div>
+            <div class="card-body p-5 d-flex flex-column">
+                <?php
+                    foreach ($products as $product) {
+                        ?>
+                        <div class="d-flex flex-row my-4">
+                            <div class="col-4"><img class="img-product" src="assets/img/<?= $product['photo'] ?>" alt="photo du produit"></div>
+                            <div class="col-6 p-5">
+                                <h3><?= $product['name'] ?></h3>
+                                <small><?= $product['category'] ?></small>
+                                
+                            </div>
+                            <div class="col-2 d-flex flex-column justify-content-center">
+                                <span class="price"><?= $product['price'] ?> €</span>
+                            </div>
                         </div>
-                        <div class="col-2 d-flex flex-column justify-content-center">
-                            <span class="price"><?= $product['price'] ?> €</span>
-                        </div>
-                    </div>
-                    <?php
-                }
-            ?>
+                        <?php
+                    }
+                ?>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
+<?php } ?>
 <?php include('footer.php'); ?>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
