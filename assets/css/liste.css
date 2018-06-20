@@ -16,3 +16,21 @@ body{
     color: #b81616;
     font-size: 30px;
 }
+.label-1{
+    line-height: 38px;
+    text-align: center;
+    font-size: 12px;
+}
+.height-38{
+    height: 38px;
+}
+.dispo-true{
+    color: #23ab26;
+    position: relative;
+    left: -35px;
+}
+.dispo-false{
+    color: #b81616;
+    position: relative;
+    left: -35px;
+}

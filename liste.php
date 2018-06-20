@@ -82,7 +82,7 @@ if(empty($errors)) {
                     <div class="form-group">
                         <label for="category">Catégorie :</label>
                         <select class="form-control" name="category">
-                        <option value="all">--- Tous les articles ---</option>
+                        <option value="all">--- Toutes les catégories ---</option>
                             <?php
                             foreach($categories as $category) {
                                 ?>
@@ -96,7 +96,16 @@ if(empty($errors)) {
                         <label for="max-price">Prix maximum</label>        
                         <input class="form-control" name="max-price" type="number" min="0">
                     </div>
-                    <button class="btn btn-primary">Rechercher</button>
+                    <div class="d-flex justify-content-between mt-4">
+                        <button class="btn btn-primary col-4 height-38">Rechercher</button>
+                        <label for="nb_per_page" class="col-5 label-1">Articles par page:</label>
+                        <select class="form-control col-3 height-38" name="nb_per_page">
+                            <option value="5">5</option>
+                            <option value="15">15</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
                 </form>
             </div>
         </div>
@@ -120,7 +129,14 @@ if(empty($errors)) {
                                 
                             </div>
                             <div class="col-2 d-flex flex-column justify-content-center">
-                                <span class="price"><?= $product['price'] ?> €</span>
+                                <span class="price"><?= $product['price'] ?> €</span><br>
+                                <?php
+                                    if($product['dispo']) {
+                                        echo '<small class="dispo-true">Disponible en magasin</small>';
+                                    }else{
+                                        echo '<small class="dispo-false">Indisponible pour le moment</small>';
+                                    }
+                                ?>
                             </div>
                         </div>
                         <?php
