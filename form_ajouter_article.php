@@ -64,8 +64,8 @@ include ('header.php');
                             <smal id="emailHelp" class="form-text text-muted">Taille max: 1Mo</smal>
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" name="dispo" for="exampleCheck1">Disponible</label>
+                            <input type="checkbox"  name="dispo" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label"  for="exampleCheck1">Disponible</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
@@ -86,8 +86,8 @@ include ('header.php');
                 if (empty($_POST['price']) or !is_numeric($_POST['price']) or $_POST['price'] > 2000) {
                     $errors['price'] = 'Prix absence ou est incorrecte';
                 }
-                $categories_recherches = ['chaussure', 'pantalon', 'tee-shirt', 'robe', 'manteau'];
-                if (empty($_POST['category']) or in_array($_POST['category'], $categories_recherches) == false) {
+
+                if (empty($_POST['category']) or !is_numeric($_POST['category'])) {
                     $errors['category'] = 'categorie incorrecte';
                 }
                 //verification du FILE
@@ -126,15 +126,17 @@ include ('header.php');
                     $result->bindValue(':produit', strip_tags($_POST['name']));
                     $result->bindValue(':prix', strip_tags($_POST['price']));
                     $result->bindValue(':categorie', strip_tags($_POST['category']));
-
+                    $result->execute();
                     //si $resultat->execute() == true , l'article a bien été enregistré
-                    if ($resultat->execute()) {
+                    if ($result->execute()) {
                         ?>
                         <div class="alert alert-primary" role="alert">
                             Produit bien ajoute
                         </div>
                         <?php
                     }
+                }else{
+                    echo implode('<br>', $errors);
                 }
 
 
