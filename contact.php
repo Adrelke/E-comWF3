@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <style>
         #map {
@@ -31,13 +32,13 @@ include ('header.php');
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nom</label>
                             <input type="type" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
+                                 </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
+                                     <label for="exampleInputEmail1">Email</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Sujet</label>
+                                          <label for="exampleInputPassword1">Sujet</label>
                             <input type="password" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
@@ -50,8 +51,8 @@ include ('header.php');
             </div>
         </div>
         <div class="col-md-5">
-            <h3>Ou nous trouver</h3>
-            <div id="map"></div>
+            <h3 class="text-center">Ou nous trouver</h3>
+            <div id="map" ></div>
         </div>
     </div>
 </div>
@@ -62,7 +63,7 @@ include ('footer.php');
 ?>
 <script>
     function initMap() {
-        var uluru = {lat: 44.8422703, lng: -0.5826098000000002};
+        var uluru = {lat: 25.728150, lng: -80.242527};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: uluru

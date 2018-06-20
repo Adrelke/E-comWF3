@@ -58,7 +58,7 @@
                         <div class="col-4">
 
                             <!-- Content -->
-                            <h6 class="text-uppercase font-weight-bold">Company name</h6>
+                            <h6 class="text-uppercase font-weight-bold">Site Ecom</h6>
                             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                             <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
@@ -70,7 +70,7 @@
                             <h6 class="text-uppercase font-weight-bold">Contact</h6>
                             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                             <p>
-                                <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
+                                <i class="fa fa-home mr-3"></i>Miami, FL 33133</p>
                             <p>
                                 <i class="fa fa-envelope mr-3"></i> info@example.com</p>
                             <p>
@@ -80,6 +80,7 @@
 
                         </div>
                 </div>
+
                 <!-- Grid column -->
 
             </div>
@@ -90,7 +91,7 @@
 
         <!-- Copyright -->
         <div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright:
-            <a class="dark-grey-text" href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+            <a class="dark-grey-text" href="https://mdbootstrap.com/bootstrap-tutorial/"> SiteEcom.com</a>
         </div>
         <!-- Copyright -->
 
