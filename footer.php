@@ -64,7 +64,9 @@
 
                         </div>
 
-                        <div class="col-3">
+
+                        <div class="col-4 blocinfo">
+
 
                             <!-- Links -->
                             <h6 class="text-uppercase font-weight-bold">Contact</h6>

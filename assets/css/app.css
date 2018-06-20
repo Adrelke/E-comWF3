@@ -17,3 +17,6 @@ header {
 .borderT {
     border-top: 5px solid black;
 }
+.blocinfo{
+    padding-left: 200px;
+}
