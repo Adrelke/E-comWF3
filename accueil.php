@@ -59,6 +59,37 @@
     <section class="container-fluid text-center titre">
         <h1 class="py-4">Présentation</h1>
     </section>
+    <section class="container-fluid presentation">
+        <div class="container textepresentation">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div>
+            <div class="row produits-exemple">
+                <!-- image type a remplacer avec image et caption de la bdd -->
+                <div class="col-12 col-md-3">
+                    <figure>
+                        <img src="http://via.placeholder.com/300x300" alt="produit1">
+                        <figcaption>Photo d'un voyage à Porto. Ville emplie de graffitis, balcons loufoques et chats profitant des quelques ruines derrière la ville.</figcaption>
+                    </figure>
+                </div>
+                <div class="col-12 col-md-3">
+                    <figure>
+                        <img src="http://via.placeholder.com/300x300" alt="produit2">
+                    </figure>
+                </div>
+                <div class="col-12 col-md-3">
+                    <figure>
+                        <img src="http://via.placeholder.com/300x300" alt="produit3">
+                    </figure>
+                </div>
+                <div class="col-12 col-md-3">
+                    <figure>
+                        <img src="http://via.placeholder.com/300x300" alt="produit4">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
     <?php include('footer.php')?>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

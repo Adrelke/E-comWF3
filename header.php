@@ -12,7 +12,7 @@
                           <a class="nav-link" href="accueil.php">Accueil <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Liste produit</a>
+                          <a class="nav-link" href="liste.php">Liste produit</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="contact.php">Contact</a>
