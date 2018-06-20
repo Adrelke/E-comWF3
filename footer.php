@@ -1,4 +1,4 @@
-<footer>
+
     <!-- Footer -->
     <footer class="page-footer font-small blue-grey lighten-5 mt-4">
 
@@ -101,4 +101,3 @@
 
     </footer>
     <!-- Footer -->
-</footer>
