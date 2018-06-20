@@ -19,18 +19,18 @@
 <form method="POST">
   <div class="form-group">
     <label for="exampleInputPassword1">Insérer le pseudo utilisateur</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input name="nickname" type="password" class="form-control" id="exampleInputPassword1" placeholder="Pseudo">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Insérer l'email utilisateur</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer email">
+    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer email">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Insérer le password utilisateur</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
   <div class="form-group">
-      <select>
+      <select name="role" class="form-control">
           <option value="ROLE_ADMIN">Rôle Administrateur</option>
           <option value="ROLE_VENDOR">Rôle vendeur</option>
           <option value="ROLE_USER">Rôle utilisateur</option>
