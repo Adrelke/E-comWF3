@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d622812-a89d-422c-817e-89d583146bbf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/form_ajouter_article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form_ajouter_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/form_ajouter_article.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/accueil.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="81" />
+              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="21" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -53,11 +52,17 @@
       <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/form_ajouter_article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
-              <folding>
-                <element signature="e#818#895#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminadduser.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/adminadduser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="97" column="40" selection-start-line="97" selection-start-column="7" selection-end-line="97" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -87,8 +92,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="210" />
-    <option name="y" value="124" />
+    <option name="x" value="302" />
+    <option name="y" value="314" />
     <option name="width" value="1486" />
     <option name="height" value="691" />
   </component>
@@ -104,6 +109,11 @@
             <path>
               <item name="E-comWF3" type="b2602c69:ProjectViewProjectNode" />
               <item name="E-comWF3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="E-comWF3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="E-comWF3" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="E-comWF3" type="b2602c69:ProjectViewProjectNode" />
@@ -150,15 +160,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529480936849</updated>
-      <workItem from="1529480938251" duration="17413000" />
+      <workItem from="1529480938251" duration="17694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17413000" />
+    <option name="totallyTimeSpent" value="17694000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="210" y="124" width="1486" height="691" extended-state="0" />
+    <frame x="302" y="314" width="1486" height="691" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24965987" />
@@ -187,6 +197,17 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/form_ajouter_article.php</url>
+          <line>26</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../API/geolocalisation.php">
@@ -236,7 +257,7 @@
     <entry file="file://$PROJECT_DIR$/accueil.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="81" />
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="21" selection-end-column="81" />
         </state>
       </provider>
     </entry>
@@ -247,13 +268,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/adminadduser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="97" column="40" selection-start-line="97" selection-start-column="7" selection-end-line="97" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/form_ajouter_article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
-          <folding>
-            <element signature="e#818#895#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
         </state>
       </provider>
     </entry>

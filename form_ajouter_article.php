@@ -24,8 +24,8 @@ include ('header.php');
 <br>
 
 <?php
- /*if($_SESSION('role')=='ROLE_ADMIN'&& $_SESSION('role')=='ROLE_VENDOR')
- {*/
+ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
+ {
 ?>
 <div class="container">
 
@@ -140,14 +140,15 @@ include ('header.php');
 
             }
 
-/*}else{
+}else {
      ?>
-    <br>
-    <br>
+     <br>
+     <br>
      <div class="alert alert-danger" role="alert">
          Page inacessible. <a href="accueil.php" class="alert-link">Retour à l'accueil</a>
      </div>
-<?PHP*/
+     <?php
+ }
 ?>
 <br>
 <br>
