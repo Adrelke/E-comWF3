@@ -22,10 +22,19 @@
                 </nav>
             </div>
             <div class="col-12 col-md-4 d-flex justify-content-end align-items-center">
-                <!-- si pas connecté afficher button Connexion -->
-                <a class="btn btn-primary" href="">Connexion</a>
-                <!-- si connecté afficher button Deconnexion -->
-                <a class="btn btn-danger" href="">Deconnexion</a>
+                <?php
+                if(empty($_SESSION)){
+                    ?>
+                    <a class="btn btn-primary" href="./admin/indexA.php">Connexion</a>
+                    <?php
+                }
+                if(isset($_SESSION['pseudo'])){
+                    ?>
+                    <p><?= $_SESSION['pseudo']?></p>
+                    <a class="btn btn-danger" href="accueil.php?deconnexion">Deconnexion</a>
+                    <?php
+                }
+                ?>
             </div>
         </div>
 </header>

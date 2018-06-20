@@ -13,20 +13,26 @@ if(!empty($_POST)){
     if(count($utilisateur) === 1){
         $mdpCrypt = $utilisateur[0]['password'];
     } else {
-        echo "email incorrect";
-    }
-
-    if($_POST['password'] == $utilisateur[0]['password'] && $utilisateur[0]['role'] == 'ROLE_ADMIN' ){
-        header('Location: adminadduser.php');
-        $_SESSION['email'] = htmlspecialchars($_POST['email']);
-        $_SESSION['pseudo'] = $utilisateur[0]['nickname'];
-        $_SESSION['role'] = $utilisateur[0]['role'];;
-    } else {
         ?>
         <div class="alert alert-danger" role="alert">
-            Vous n'avez pas les droits necessaires pour vous connecter.
+            Merci de remplir les champs.
         </div>
         <?php
+    }
+    
+    if(!empty($_POST['password'])){
+        if($_POST['password'] == $utilisateur[0]['password'] && $utilisateur[0]['role'] == 'ROLE_ADMIN' ){
+            header('Location: adminadduser.php');
+            $_SESSION['email'] = htmlspecialchars($_POST['email']);
+            $_SESSION['pseudo'] = $utilisateur[0]['nickname'];
+            $_SESSION['role'] = $utilisateur[0]['role'];;
+        } else {
+            ?>
+            <div class="alert alert-danger" role="alert">
+                Vous n'avez pas les droits necessaires pour vous connecter.
+            </div>
+            <?php
+        }
     }
 }
 
@@ -46,23 +52,34 @@ if(!empty($_POST)){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
-      <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <form method="POST" action="indexA.php">
-                  <div class="form-group">
-                    <label for="">Email</label>
-                    <input type="email" class="form-control" name="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="">Mot de passe</label>
-                    <input type="text" class="form-control" name="password">
-                  </div>
-                  <button class="btn btn-success">Se connecter</button>
-                </form>
+    <style>
+        body{
+            background: #E6EE9C ;
+        }
+
+        .card {
+            box-shadow: 0px 0px 25px black;
+        }
+    </style>
+    <div class="container">
+        <div class="row d-flex justify-content-center" style="margin-top: 285px;">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <form method="POST" action="indexA.php">
+                      <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" name="email">
+                      </div>
+                      <div class="form-group">
+                        <label for="">Mot de passe</label>
+                        <input type="text" class="form-control" name="password">
+                      </div>
+                      <button class="btn btn-success">Se connecter</button>
+                    </form>
+                </div>
             </div>
         </div>
-      </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

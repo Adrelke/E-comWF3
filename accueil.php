@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(isset($_GET['deconnexion'])){
+    session_destroy();
+    header('Location: accueil.php');
+}
 
 ?>
 
