@@ -107,7 +107,7 @@ if(!empty($_SESSION)){
             <a class="nav-link" href="../accueil.php">Accueil<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav_item active">
-            <a class="nav-link" href="adminadduser.php?deconnexion">deconnexion<span class="sr-only">(current)</a>
+            <a class="nav-link" href="adminadduser.php?deconnexion">Deconnexion<span class="sr-only">(current)</a>
           </li>
         </ul>
       </div>
@@ -118,25 +118,26 @@ if(!empty($_SESSION)){
     <div class="container">
     <form method="POST">
       <div class="form-group">
-        <label for="exampleInputPassword1">Insérer le nickname utilisateur</label>
-        <input name="nickname" type="text" class="form-control" id="exampleInputPassword1" placeholder="nickname">
+        <label for="exampleInputPassword1">Pseudo</label>
+        <input name="nickname" type="text" class="form-control" id="exampleInputPassword1">
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Insérer l'email utilisateur</label>
-        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer email">
+        <label for="exampleInputEmail1">Addresse Email</label>
+        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Insérer le password utilisateur</label>
-        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="exampleInputPassword1">Mot de passe</label>
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
       </div>
       <div class="form-group">
+          <label for="">Rôle :</label>
           <select name="role" class="form-control">
-              <option value="ROLE_ADMIN">Rôle Administrateur</option>
-              <option value="ROLE_VENDOR">Rôle vendeur</option>
-              <option value="ROLE_USER">Rôle utilisateur</option>
+              <option value="ROLE_ADMIN">Administrateur</option>
+              <option value="ROLE_VENDOR">Vendeur</option>
+              <option value="ROLE_USER">Utilisateur</option>
           </select>
       </div>
-      <button type="submit" class="btn btn-primary">Inscrire</button>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
     </form>
     </div>
 
