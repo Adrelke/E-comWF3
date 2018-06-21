@@ -29,17 +29,12 @@ session_start();
     </style>
       <?php
       if(!empty($_SESSION)){
-        if ($_SESSION['role'] == "ROLE_ADMIN") {
-
-
-
-
-          
+        if ($_SESSION['role'] == "ROLE_ADMIN") {          
             ?>
             <a  class="retour" href="../accueil.php"><i class="fas fa-arrow-left fa-3x"></i></a>    
-          <div class="container">
+          <div class="container-fluid">
               <div class="row" style="margin-top: 285px;">
-                  <div class="col-12 col-md-4 text-center">
+                  <div class="col-12 col-md-3 text-center d-flex justify-content-center">
                     <div class="card" style="width: 18rem;">
                       <div class="card-body">
                         <h5 class="card-title">Ajouter un utilisateur</h5>
@@ -48,7 +43,7 @@ session_start();
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-md-4 text-center">
+                  <div class="col-12 col-md-3 text-center d-flex justify-content-center">
                     <div class="card" style="width: 18rem;">
                       <div class="card-body">
                         <h5 class="card-title">Ajout/Modif articles</h5>
@@ -57,7 +52,7 @@ session_start();
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-md-4 text-center">
+                  <div class="col-12 col-md-3 text-center d-flex justify-content-center">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                           <h5 class="card-title">Modif informations</h5>
@@ -66,7 +61,22 @@ session_start();
                         </div>
                     </div>
                   </div>
+                  <div class="col-12 col-md-3 text-center d-flex justify-content-center">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Messagerie</h5>
+                          <p class="card-text"><i class="far fa-envelope fa-7x"></i></p>
+                          <a href="messages.php" class="card-link"><i class="fas fa-arrow-right fa-2x"></i></a>
+                        </div>
+                    </div>
+                  </div>
               </div>
+          </div>
+          <?php
+        } else {
+          ?>
+          <div class="alert alert-danger" role="alert">
+              Vous n'avez pas les droits necessaires pour vous accéder à cette page.
           </div>
           <?php
         }

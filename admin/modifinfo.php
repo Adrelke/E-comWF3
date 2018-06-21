@@ -36,11 +36,12 @@ require_once('../bdd.php');
 </head>
 <body>
     <?php
+    include('headerA.php');
 if(!empty($_SESSION)){
         if ($_SESSION['role'] == "ROLE_ADMIN") {
 
             if(!empty($_POST)){
-                
+                //var_dump($_POST);
                 $post = [];
 
 
@@ -51,19 +52,13 @@ if(!empty($_SESSION)){
 
                 $errors = [];
 
-                if(empty($post['name'])){
-                    //le paramètre author n'existe pas ou est vide
-                    $errors['name'] = 'Vous devez entrer le nom du magasin';
-                }
-
-                if(empty($post['adress'])){
-                    //le paramètre content n'existe pas ou est vide
-                    $errors['adress'] = 'Vous devez une adresse au magasin';
-                }
+                
+               
 
 
                 $masSize = 1048576;
                 $fileInfo=pathinfo($_FILES['photo']['name']);
+                //var_dump($fileInfo);
                 $extension=$fileInfo['extension'];
                 $extensions_autorisees=['jpg','png','jpeg'];
                 $newName = md5(uniqid(rand(),true));
@@ -84,28 +79,39 @@ if(!empty($_SESSION)){
 
                 if(empty($errors)){
                     //si le tableau $errors est vide, on peut enregistrer dans la bdd
+                    $requete = 'UPDATE shops SET';
 
-                    $resultat = $connexion->prepare('UPDATE shops SET name = :name, adress = :adress, photo = :photo WHERE id = 1');
-                    $resultat->bindValue(':titre', $post['title']);
-                    $resultat->bindValue(':contenu', $post['content']);
-                    $resultat->bindValue(':auteur', $post['author']);
-                    $resultat->bindValue(':idArticle', $post['id']);
+                    if($post['name']){
+                        $requete .= ' name = :name';
+                    }
+                    if($post['adress']){
+                        $requete .= ' adress = :adress';
+                    }
+                    if(!empty($_FILES['photo'])){
+                        $requete .= ' photo = "'.$newName.'.'.$extension.'"';
+                    }
+
+                    $resultat = $connexion->prepare($requete);
+
+                    if($post['name']){
+                    $resultat->bindValue(':name', $post['name']);
+                    }
+                    if($post['adress']){
+                    $resultat->bindValue(':adress', $post['adress']);
+                    }
+                    if(!empty($_FILES['photo'])){
+                    $resultat->bindValue(':photo', "'.$newName.'.'.$extension.'");
+                    }
                     if($resultat->execute()){
-                        echo '<p class="alert alert-success">Article modifié</p>';
+                        echo '<p class="alert alert-success">Infos modifiées!</p>';
                     }
                     else{
-                        echo '<p class="alert alert-danger">problème lors de l\'enregistremen</p>';
+                        echo '<p class="alert alert-danger">problème lors des modifications</p>';
                     }
 
                 }
 
-
-
-
-
             }
-
-
 
     ?>
 <div class="container">
@@ -119,12 +125,12 @@ if(!empty($_SESSION)){
         <input name="adress" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
       </div>
       <div class="form-group">
-        <label >Modifier la photo de couverture</label>
+        <label >Modifier la photo Slider 1</label>
         <input name="photo" type="file" class="form-control" id="exampleInputPassword1">
       </div>
       <button type="submit" class="btn btn-primary">Modifier</button>
     </form>
-    </div>
+</div>
     <?php
 
     }
