@@ -1,3 +1,3 @@
-function addCookie(){
-    Cookies.set('article1', 'value', { expires: 7 });
+function addCookie(article){
+    Cookies.set(article, document.getElementById('name').innerHTML, { expires: 7 });
 }

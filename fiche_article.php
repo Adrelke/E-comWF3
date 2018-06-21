@@ -52,22 +52,22 @@ var_dump($display_random_products);
       <?php include('header.php') ?>
       <section class="container mt-5 d-flex justify-content-between">
         <div class="col-5">
-          <div class="card">
+          <div class="card simpleCart_shelfItem">
 
               <div class="card-header">
                 <div class="d-flex justify-content-center">
-                  <h5 class="no-margin"><?= $product['name'] ?></h5>
+                  <h5 id="name" class="no-margin item_name"><?= $product['name'] ?></h5>
                 </div>
               </div>
 
               <div class="card-body d-flex flex-column justify-content-center">
-              <?php
-                if($product['dispo']) {
-                    echo '<small class="line-center dispo-true">Disponible en magasin</small>';
-                }else{
-                    echo '<small class="dispo-false">En rupture de stock</small>';
-                }
-              ?>
+                <?php
+                  if($product['dispo']) {
+                      echo '<small class="line-center dispo-true">Disponible en magasin</small>';
+                  }else{
+                      echo '<small class="dispo-false">En rupture de stock</small>';
+                  }
+                ?>
                 <div class="row justify-content-center">
                   <img class="img-product mt-2" src="assets/img/<?= $product['photo'] ?>" alt="photo du produit">
                 </div>
@@ -75,10 +75,12 @@ var_dump($display_random_products);
                   <small class="text-center"><?= $product['category_name'] ?></small>
                 </div>
                 <div class="d-flex justify-content-around mt-2">
-                  <span class="price height-45 m-0"><?= $product['price'] ?> €</span>
-                  <button class="btn btn-secondary height-45">Ajouter au panier</button>
+                  <span id="price" class="price height-45 m-0 item_price"><?= $product['price'] ?> €</span>
+                  <a class="btn btn-secondary height-45 item_add" href="javascript:;" onclick="addCookie('<?= $product['product_id'] ?>')">Ajouter au panier</a>
                 </div>
               </div>
+  
+
               
 
           </div>

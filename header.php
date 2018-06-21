@@ -34,7 +34,7 @@
                 </nav>
             </div>
             <div class="col-12 col-md-4 d-flex justify-content-end align-items-center">
-                <a class="option" href="panier.php"><i class="fas fa-shopping-basket fa-2x"></i></a>
+                <div class="cartInfo mr-5"><span class="simpleCart_quantity"></span> items - <span class="simpleCart_total"></div>
                 <?php
                 if(empty($_SESSION)){
                     ?>
