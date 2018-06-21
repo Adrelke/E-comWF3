@@ -27,7 +27,7 @@ include('headerA.php');
             //le formulaire été envoyé:
             $errors = [];
             //verifications des données
-            if (empty($_POST['name']) OR mb_strlen($_POST['name']) < 3 OR mb_strlen($_POST['name']) > 20) {
+            if (empty($_POST['name']) OR mb_strlen($_POST['name']) < 3 OR mb_strlen($_POST['name']) > 30) {
                 //le paramètre n'existe pas, est trop long ou est trop court
                 $errors['name'] = 'Nom absent, ou incorrecte';
             }
@@ -68,9 +68,9 @@ include('headerA.php');
             if(empty($errors)) {
                 //on peut modifier dans la base de donnees
                 if($_FILES['photo']['error'] != 0){
-                    $result = $connexion->prepare('UPDATE product SET name=:nom, price=:prix, category=:categorie, dispo=:disponibilite  WHERE id = :id');
+                    $result = $connexion->prepare('UPDATE products SET name=:nom, price=:prix, category=:categorie, dispo=:disponibilite  WHERE id = :id');
                 }else{
-                    $result = $connexion->prepare('UPDATE product SET name=:nom, price=:prix, category=:categorie, dispo=:disponibilite, photo = "' . $newName . '.' . $extension . '"   WHERE id = :id');
+                    $result = $connexion->prepare('UPDATE products SET name=:nom, price=:prix, category=:categorie, dispo=:disponibilite, photo = "' . $newName . '.' . $extension . '"   WHERE id = :id');
                 }
 
 
@@ -86,6 +86,11 @@ include('headerA.php');
                     <div class="alert alert-success" role="alert">
                         Produit bien modifie
                     </div>
+                    <br>
+                    <br>
+                    <div class="alert alert-success" role="alert">
+                        <a href="form_ajouter_article.php" class="alert-link">Retour</a>
+                    </div>
                     <?php
                 }else{
                         ?>
@@ -97,7 +102,14 @@ include('headerA.php');
 
 
             }else{
-                echo implode('<br>', $errors);
+                foreach ($errors as $error){
+                    ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?=$error?>
+                    </div>
+                    <?php
+                }
+
             }
 
 
@@ -108,7 +120,7 @@ include('headerA.php');
                     if(is_numeric($_GET['id'])) {
 
                         //requete pour montrer les doonnes
-                        $res = $connexion->prepare('SELECT * FROM product WHERE id= :id');
+                        $res = $connexion->prepare('SELECT * FROM products WHERE id= :id');
                         $res->bindValue(':id', strip_tags($_GET['id']));
                         $res->execute();
                         $article = $res->fetch();
