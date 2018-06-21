@@ -8,6 +8,10 @@
         header('Location: ../accueil.php');
     
     }
+
+$select_categories = $connexion->query('SELECT * FROM category');
+$categories = $select_categories->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +34,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
     ?>
 <div class="container">
 
-            <div class="card">
+            <div class="card mt-4">
                 <h5 class="card-header">Ajouter un Article</h5>
                 <div class="card-body">
                     <form method="post" action="form_ajouter_article.php" enctype="multipart/form-data">
@@ -70,6 +74,17 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                         </div>
                         <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <h5 class="card-header">Gérer les catégories</h5>
+                <div class="card-body">
+                    <?php
+                    foreach($categories as $category) {
+                        
+                    }
+                    ?>
                 </div>
             </div>
 
