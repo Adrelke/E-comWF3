@@ -188,6 +188,11 @@ include('headerA.php');
 
 
                         </div>
+                        <br>
+                        <br>
+                        <div class="alert alert-danger" role="alert">
+                            <a href="form_ajouter_article.php" class="alert-link">Retour</a>
+                        </div>
 
 
                         <?php
@@ -200,7 +205,7 @@ include('headerA.php');
 <br>
 <br>
 <div class="alert alert-danger" role="alert">
-    Page inacessible. <a href="accueil.php" class="alert-link">Retour à l'accueil</a>
+    Page inacessible. <a href="form_ajouter_article.php" class="alert-link">Retour</a>
 </div>
 <?php
 }

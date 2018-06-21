@@ -294,7 +294,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                         $rsl= $connexion->query('SELECT * FROM products');
                         $productos = $rsl ->fetchAll();
                         foreach ($productos as $product){
-                            echo '<li class="list-group-item"><div class="row"><div class="col-md-8"><a href="voir_produit.php">'.$product['name'].'</a></div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$product['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id='.$product['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
+                            echo '<li class="list-group-item"><div class="row"><div class="col-md-8"><a href="voir_produit.php?id_product='.$product['id'].'">'.$product['name'].'</a></div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$product['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id='.$product['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
                         }
                         ?>
                     </ul>
