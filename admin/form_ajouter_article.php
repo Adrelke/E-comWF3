@@ -45,7 +45,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
 
                     $errors = [];
                     //verifications des données
-                    if (empty($_POST['name']) or mb_strlen($_POST['name']) < 3 or mb_strlen($_POST['name']) > 20) {
+                    if (empty($_POST['name']) or mb_strlen($_POST['name']) < 3 or mb_strlen($_POST['name']) > 40) {
                         //le paramètre n'existe pas, est trop long ou est trop court
                         $errors['name'] = 'Nom absent, ou incorrecte';
                     }

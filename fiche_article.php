@@ -37,22 +37,22 @@ $random_products = $select_random_products->fetchAll();
       <?php include('header.php') ?>
       <section class="container mt-5 d-flex justify-content-between">
         <div class="col-5">
-          <div class="card">
+          <div class="card simpleCart_shelfItem">
 
               <div class="card-header">
                 <div class="d-flex justify-content-center">
-                  <h5 class="no-margin"><?= $product['name'] ?></h5>
+                  <h5 id="name" class="no-margin item_name"><?= $product['name'] ?></h5>
                 </div>
               </div>
 
               <div class="card-body d-flex flex-column justify-content-center">
-              <?php
-                if($product['dispo']) {
-                    echo '<small class="line-center dispo-true">Disponible en magasin</small>';
-                }else{
-                    echo '<small class="dispo-false">En rupture de stock</small>';
-                }
-              ?>
+                <?php
+                  if($product['dispo']) {
+                      echo '<small class="line-center dispo-true">Disponible en magasin</small>';
+                  }else{
+                      echo '<small class="dispo-false">En rupture de stock</small>';
+                  }
+                ?>
                 <div class="row justify-content-center">
                   <img class="img-product mt-2" src="assets/img/<?= $product['photo'] ?>" alt="photo du produit">
                 </div>
@@ -60,10 +60,12 @@ $random_products = $select_random_products->fetchAll();
                   <small class="text-center"><?= $product['category_name'] ?></small>
                 </div>
                 <div class="d-flex justify-content-around mt-2">
-                  <span class="price height-45 m-0"><?= $product['price'] ?> €</span>
-                  <button class="btn btn-secondary height-45">Ajouter au panier</button>
+                  <span id="price" class="price height-45 m-0 item_price"><?= $product['price'] ?> €</span>
+                  <a class="btn btn-secondary height-45 item_add" href="javascript:;" onclick="addCookie('<?= $product['product_id'] ?>')">Ajouter au panier</a>
                 </div>
               </div>
+  
+
               
 
           </div>
@@ -71,7 +73,7 @@ $random_products = $select_random_products->fetchAll();
         <div class="col-4">
           <div class="card">
             <div class="card-body small-card-height">
-              <img class="min-img float-left" src="assets/img/<?= $random_products[0]['photo'] ?>">
+              <img class="mr-2 min-img float-left" src="assets/img/<?= $random_products[0]['photo'] ?>">
               <div class="d-flex flex-column justify-content-around height-190">
                 <span class="price text-center"><?= $random_products[0]['price'] ?> €</span>
                 <a class="text-center" href="fiche_article.php?id_product=<?= $random_products[0]['id'] ?>">Voir la fiche</a>
@@ -81,7 +83,7 @@ $random_products = $select_random_products->fetchAll();
 
           <div class="card margin-30">
           <div class="card-body small-card-height">
-              <img class="min-img float-left" src="assets/img/<?= $random_products[1]['photo'] ?>">
+              <img class="mr-2 min-img float-left" src="assets/img/<?= $random_products[1]['photo'] ?>">
               <div class="d-flex flex-column justify-content-around height-190">
                 <span class="price text-center"><?= $random_products[1]['price'] ?> €</span>
                 <a class="text-center" href="fiche_article.php?id_product=<?= $random_products[1]['id'] ?>">Voir la fiche</a>
