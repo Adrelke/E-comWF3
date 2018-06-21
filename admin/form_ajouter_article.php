@@ -27,7 +27,7 @@ $categories = $select_categories->fetchAll();
 </head>
 <body>
 
-<<<<<<< HEAD
+
 
 <?PHP
 
@@ -35,66 +35,7 @@ $categories = $select_categories->fetchAll();
 if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
 {
     include('headerA.php');
-    ?>
-<div class="container">
 
-            <div class="card mt-4">
-                <h5 class="card-header">Ajouter un Article</h5>
-                <div class="card-body">
-                    <form method="post" action="form_ajouter_article.php" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Produit</label>
-                            <input type="text" name="name" class="form-control" >
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Prix</label>
-                            <input type="number" min="0" name="price" class="form-control" >
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Categories</label>
-                            <select class="form-control" name="category" id="exampleFormControlSelect1">
-                                <option value="">Selectionne une categorie</option>
-                                <?php
-                                //requete pour afficher les categories
-                                $resultat = $connexion->query('SELECT * FROM category');
-                                $resultat->execute();
-                                $categories = $resultat->fetchAll();
-                                foreach ($categories as $categorie) {
-                                    ?>
-                                    <option value="<?=$categorie['id']?>"><?=$categorie['category']?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Photo du produit</label>
-                            <input type="file" name="photo" class="form-control-file" id="exampleFormControlFile1">
-                            <smal id="emailHelp" class="form-text text-muted">Taille max: 1Mo</smal>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox"  name="dispo" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label"  for="exampleCheck1">Disponible</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="card mt-4">
-                <h5 class="card-header">Gérer les catégories</h5>
-                <div class="card-body">
-                    <?php
-                    foreach($categories as $category) {
-                        
-                    }
-                    ?>
-                </div>
-            </div>
-
-</div>
-<?php
->>>>>>> 39f2a8ca91a5a5ff14f9f09e1ea4fefe723d1643
     //si on fait ""submit""
             if (!empty($_POST)) {
                 //le formulaire été envoyé:
@@ -159,17 +100,13 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                             Produit bien ajoute
                         </div>
                         <?php
-<<<<<<< HEAD
 
                 }else{
-=======
-                    }
-                } else {
->>>>>>> 39f2a8ca91a5a5ff14f9f09e1ea4fefe723d1643
                     echo implode('<br>', $errors);
+                    }
                 }
-            }
-<<<<<<< HEAD
+
+
 
 
             //code pour supprimer l'article
@@ -187,8 +124,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
             }
 
 
- /*if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
- {*/
+
 ?>
         <div class="container">
 
@@ -236,6 +172,18 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
             </div>
             <br>
             <br>
+            <div class="card mt-4">
+                <h5 class="card-header">Gérer les catégories</h5>
+                <div class="card-body">
+                    <?php
+                    foreach($categories as $category) {
+
+                    }
+                    ?>
+                </div>
+            </div>
+            <br>
+            <br>
             <!--  LISTE D'articles  -->
             <div class="card" ">
             <h5 class="card-title">Liste des Produits</h5>
@@ -255,8 +203,8 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
 
         </div>
 <?php
-}else {
-=======
+
+
  }else {
 
      ?>

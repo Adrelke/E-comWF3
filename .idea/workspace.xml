@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d622812-a89d-422c-817e-89d583146bbf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/changementmdp.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/composer.phar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/headerA.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/messages.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/reset.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/img/e1845cdd2e4a4aec7f59ef46a2866d8b.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fiche_article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/accueil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/adminadduser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adminadduser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/form_ajouter_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/form_ajouter_article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/indexA.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/indexA.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/modifinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/modifinfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/optsadmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/optsadmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/liste.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/liste.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/liste.php" beforeDir="false" afterPath="$PROJECT_DIR$/liste.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/modifier_produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/modifier_produit.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,20 +50,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="138" column="16" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
+            <state relative-caret-position="1836">
+              <caret line="219" column="4" lean-forward="true" selection-start-line="219" selection-start-column="4" selection-end-line="219" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modifier_produit.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="modifier_produit.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/modifier_produit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
+            <state relative-caret-position="234">
+              <caret line="72" column="199" selection-start-line="72" selection-start-column="199" selection-end-line="72" selection-end-column="199" />
             </state>
           </provider>
         </entry>
@@ -100,8 +82,8 @@
         <option value="$PROJECT_DIR$/form_ajouter_article.php" />
         <option value="$PROJECT_DIR$/admin/optsadmin.php" />
         <option value="$PROJECT_DIR$/admin/liste_admin.php" />
-        <option value="$PROJECT_DIR$/admin/modifier_produit.php" />
         <option value="$PROJECT_DIR$/admin/form_ajouter_article.php" />
+        <option value="$PROJECT_DIR$/admin/modifier_produit.php" />
       </list>
     </option>
   </component>
@@ -189,12 +171,12 @@
       <option name="presentableId" value="Default" />
       <updated>1529480936849</updated>
       <workItem from="1529480938251" duration="21241000" />
-      <workItem from="1529564355095" duration="11662000" />
+      <workItem from="1529564355095" duration="14548000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32903000" />
+    <option name="totallyTimeSpent" value="35789000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -351,17 +333,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/modifier_produit.php">
+    <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
+        <state relative-caret-position="1836">
+          <caret line="219" column="4" lean-forward="true" selection-start-line="219" selection-start-column="4" selection-end-line="219" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
+    <entry file="file://$PROJECT_DIR$/admin/modifier_produit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="138" column="16" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
+        <state relative-caret-position="234">
+          <caret line="72" column="199" selection-start-line="72" selection-start-column="199" selection-end-line="72" selection-end-column="199" />
         </state>
       </provider>
     </entry>
