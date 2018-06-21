@@ -83,6 +83,7 @@ if(!empty($_POST)){
                         <input type="text" class="form-control" name="password">
                       </div>
                       <button class="btn btn-success">Se connecter</button>
+                      <p> <a href="reset.php">Mot de passe oublié ?</a> </p>
                     </form>
                 </div>
             </div>
