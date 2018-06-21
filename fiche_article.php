@@ -71,7 +71,7 @@ $random_products = $select_random_products->fetchAll();
         <div class="col-4">
           <div class="card">
             <div class="card-body small-card-height">
-              <img class="min-img float-left" src="assets/img/<?= $random_products[0]['photo'] ?>">
+              <img class="mr-2 min-img float-left" src="assets/img/<?= $random_products[0]['photo'] ?>">
               <div class="d-flex flex-column justify-content-around height-190">
                 <span class="price text-center"><?= $random_products[0]['price'] ?> €</span>
                 <a class="text-center" href="fiche_article.php?id_product=<?= $random_products[0]['id'] ?>">Voir la fiche</a>
@@ -81,7 +81,7 @@ $random_products = $select_random_products->fetchAll();
 
           <div class="card margin-30">
           <div class="card-body small-card-height">
-              <img class="min-img float-left" src="assets/img/<?= $random_products[1]['photo'] ?>">
+              <img class="mr-2 min-img float-left" src="assets/img/<?= $random_products[1]['photo'] ?>">
               <div class="d-flex flex-column justify-content-around height-190">
                 <span class="price text-center"><?= $random_products[1]['price'] ?> €</span>
                 <a class="text-center" href="fiche_article.php?id_product=<?= $random_products[1]['id'] ?>">Voir la fiche</a>
