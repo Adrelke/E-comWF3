@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-    <title>Contact</title>
+    <title>Formulaire pour ajouter un Article</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,56 +30,7 @@
 <br>
 <br>
 
-<?php
- if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
- {
-?>
-<div class="container">
 
-            <div class="card">
-                <h5 class="card-header">Ajouter un Article</h5>
-                <div class="card-body">
-                    <form method="post" action="form_ajouter_article.php" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Produit</label>
-                            <input type="text" name="name" class="form-control" >
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Prix</label>
-                            <input type="number" min="0" name="price" class="form-control" >
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Categories</label>
-                            <select class="form-control" name="category" id="exampleFormControlSelect1">
-                                <option value="">Selectionne une categorie</option>
-                                <?php
-                                    //requete pour afficher les categories
-                                $resultat = $connexion->query('SELECT * FROM category');
-                                $resultat->execute();
-                                $categories = $resultat->fetchAll();
-                                foreach ($categories as $categorie){
-                                ?>
-                                <option value="<?=$categorie['id']?>"><?=$categorie['category']?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Photo du produit</label>
-                            <input type="file" name="photo" class="form-control-file" id="exampleFormControlFile1">
-                            <smal id="emailHelp" class="form-text text-muted">Taille max: 1Mo</smal>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox"  name="dispo" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label"  for="exampleCheck1">Disponible</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                    </form>
-                </div>
-            </div>
-
-</div>
 <?PHP
     //si on fait ""submit""
             if(!empty($_POST)) {
@@ -118,7 +69,7 @@
                 }
 
                 //donner le valeur a dispo
-                if($_POST['dispo']=='on'){
+                if(isset($_POST['dispo'])){
                     $dispo=1;
                 }else{$dispo=0;}
 
@@ -133,15 +84,15 @@
                     $result->bindValue(':produit', strip_tags($_POST['name']));
                     $result->bindValue(':prix', strip_tags($_POST['price']));
                     $result->bindValue(':categorie', strip_tags($_POST['category']));
-                    $result->execute();
+
                     //si $resultat->execute() == true , l'article a bien été enregistré
-                    if ($result->execute()) {
+                    $result->execute()
                         ?>
                         <div class="alert alert-success" role="alert">
                             Produit bien ajoute
                         </div>
                         <?php
-                    }
+
                 }else{
                     echo implode('<br>', $errors);
                 }
@@ -149,7 +100,91 @@
 
             }
 
-}else {
+
+            //code pour supprimer l'article
+            if(!empty($_GET)){
+                if(is_numeric($_GET['id'])){
+                    $supprimer = $connexion -> query('DELETE FROM product WHERE id= '.$_GET['id'].' ');
+
+                }else{
+                    ?>
+                    <div class="alert alert-danger" role="alert">
+                        Impossible de Supprimer le produit
+                    </div>
+                    <?php
+                }
+            }
+
+
+ /*if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
+ {*/
+?>
+        <div class="container">
+
+            <div class="card">
+                <h5 class="card-header">Ajouter un Article</h5>
+                <div class="card-body">
+                    <form method="post" action="form_ajouter_article.php" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Produit</label>
+                            <input type="text" name="name" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Prix</label>
+                            <input type="number" min="0" name="price" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Categories</label>
+                            <select class="form-control" name="category" id="exampleFormControlSelect1">
+                                <option value="">Selectionne une categorie</option>
+                                <?php
+                                //requete pour afficher les categories
+                                $resultat = $connexion->query('SELECT * FROM category');
+                                $resultat->execute();
+                                $categories = $resultat->fetchAll();
+                                foreach ($categories as $categorie){
+                                    ?>
+                                    <option value="<?=$categorie['id']?>"><?=$categorie['category']?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Photo du produit</label>
+                            <input type="file" name="photo" class="form-control-file" id="exampleFormControlFile1">
+                            <smal id="emailHelp" class="form-text text-muted">Taille max: 1Mo</smal>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox"  name="dispo" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label"  for="exampleCheck1">Disponible</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <br>
+            <!--  LISTE D'articles  -->
+            <div class="card" ">
+            <h5 class="card-title">Liste des Produits</h5>
+            <ul class="list-group list-group-flush">
+                <?php
+                //requete pour lister les produits
+                //seulement va me montrer les produits disponibles
+                $rsl= $connexion->query('SELECT * FROM product');
+                $productos = $rsl ->fetchAll();
+                foreach ($productos as $product){
+                    echo '<li class="list-group-item"><div class="row"><div class="col-md-8"> '.$product['name'].'</div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$product['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id='.$product['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
+                }
+                ?>
+            </ul>
+
+        </div>
+
+        </div>
+<?php
+/*}else {
      ?>
      <br>
      <br>
@@ -157,7 +192,7 @@
          Page inacessible. <a href="accueil.php" class="alert-link">Retour à l'accueil</a>
      </div>
      <?php
- }
+ }*/
 ?>
 <br>
 <br>
