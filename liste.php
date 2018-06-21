@@ -226,7 +226,7 @@ if(empty($errors)) {
                         <div class="d-flex flex-row my-4">
                             <div class="col-4"><img class="img-product" src="assets/img/<?= $product['photo'] ?>" alt="photo du produit"></div>
                             <div class="col-6 p-5">
-                                <h3><?php echo preg_replace('#('.htmlspecialchars($_POST["product_name"]).')#i', '<span style="color: red;">$1</span>', $product['name']) ?></h3>
+                                <h3><?php if(isset($product_name)){echo preg_replace('#('.htmlspecialchars($_POST["product_name"]).')#i', '<span style="color: red;">$1</span>', $product['name']);} ?></h3>
                                 <small><?= $product['category_name'] ?></small><br>
                                 <a href="fiche_article.php?id_product=<?= $product['product_id'] ?>"><small>Voir la fiche de l'article</small></a>
                                 
