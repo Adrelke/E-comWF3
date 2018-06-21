@@ -1,5 +1,9 @@
 
     <!-- Footer -->
+    <?php
+    require_once('bdd.php');
+
+    ?>
     <footer class="page-footer font-small blue-grey lighten-5 mt-4">
 
         <div style="background-color: #fff;">
@@ -60,26 +64,43 @@
                             <!-- Content -->
                             <h6 class="text-uppercase font-weight-bold">Site Ecom</h6>
                             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                            <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Sur Le GROSSITE l’univers de la cool attitude est de rigueur : l’ambiance, les décors et l’énergie de notre équipe de vente sont en totale harmonie avec l’esprit Tendance Store que nous avons voulu donner au magasin.
+                             Avec notre large choix de marques, vêtements, chaussures et accessoires de qualité, vous serez toujours en accord avec les tendances d’aujourd’hui.
+                             En outre, nous vous sommes totalement dévoués pour vous conseiller et vous suggérer les styles les plus « trendy » et « in » du moment.</p>
 
                         </div>
 
 
                         <div class="col-4 blocinfo">
 
+                        <?php
+                            
+                            $resultat = $connexion->query('SELECT * FROM shops');
+                            $infos = $resultat->fetchAll();
+                            //var_dump($infos);
+                            foreach($infos as $info){
+
+                            
+                        ?>
+                    
+
+
+
 
                             <!-- Links -->
                             <h6 class="text-uppercase font-weight-bold">Contact</h6>
                             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                             <p>
-                                <i class="fa fa-home mr-3"></i>Miami, FL 33133</p>
+                                <i class="fa fa-home mr-3"></i><?= $info['name']?></p>
                             <p>
-                                <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+                                <i class="fas fa-address-card mr-3"></i><?= $info['adress']?></p>
                             <p>
                                 <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
-                            <p>
-                                <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+                            
 
+                            <?php          
+                            }
+                            ?>
                         </div>
                 </div>
 

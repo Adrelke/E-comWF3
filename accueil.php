@@ -1,10 +1,17 @@
 <?php
 session_start();
+require_once('bdd.php');
 
 if(isset($_GET['deconnexion'])){
     session_destroy();
     header('Location: accueil.php');
 }
+
+$resultat = $connexion->query('SELECT * FROM shops');
+$info = $resultat->fetch();
+//var_dump($info);
+//echo $info['photo'];
+
 
 ?>
 
@@ -36,18 +43,20 @@ if(isset($_GET['deconnexion'])){
                             <li data-target="#carouselId" data-slide-to="2"></li>
                             <li data-target="#carouselId" data-slide-to="2"></li>
                         </ol>
+                        <?php 
+//var_dump($info); ?>
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active">
-                                <img src="http://via.placeholder.com/1100x600" alt="First slide">
+                                <img src="./assets/img/<?php echo $info['photo']?>" alt="First slide" name="photo1">
                             </div>
                             <div class="carousel-item">
-                                <img src="http://via.placeholder.com/1100x600" alt="Second slide">
+                                <img src="http://via.placeholder.com/1100x600" alt="Second slide" name="photo2">
                             </div>
                             <div class="carousel-item">
-                                <img src="http://via.placeholder.com/1100x600" alt="Third slide">
+                                <img src="http://via.placeholder.com/1100x600" alt="Third slide" name="photo3">
                             </div>
                             <div class="carousel-item">
-                                <img src="http://via.placeholder.com/1100x600" alt="Third slide">
+                                <img src="http://via.placeholder.com/1100x600" alt="Third slide" name="photo4">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
