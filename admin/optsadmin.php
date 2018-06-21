@@ -30,6 +30,11 @@ session_start();
       <?php
       if(!empty($_SESSION)){
         if ($_SESSION['role'] == "ROLE_ADMIN") {
+
+
+
+
+          
             ?>
             <a  class="retour" href="../accueil.php"><i class="fas fa-arrow-left fa-3x"></i></a>    
           <div class="container">
@@ -57,7 +62,7 @@ session_start();
                         <div class="card-body">
                           <h5 class="card-title">Modif informations</h5>
                           <p class="card-text"><i class="fas fa-globe fa-7x"></i></p>
-                          <a href="#" class="card-link"><i class="fas fa-arrow-right fa-2x"></i></a>
+                          <a href="modifinfo.php" class="card-link"><i class="fas fa-arrow-right fa-2x"></i></a>
                         </div>
                     </div>
                   </div>

@@ -5,10 +5,12 @@ $select_categories = $connexion->query('SELECT * FROM category');
 $categories = $select_categories->fetchAll();
 
 $errors = [];
-
 //Erreur si aucun champ n'est rempli ou si le seul champ rempli est 'categorie' avec la valeur 'all'
 if ((empty($_POST['product_name']) && empty($_POST['category']) && empty($_POST['max-price'])) || (empty($_POST['product_name']) && empty($_POST['max-price']) && $_POST['category'] == 'all')) {
     $errors[] = 'aucun champ remplli';
+}
+if(empty($_POST['nb_per_page']) || ( $_POST['nb_per_page'] != 5 && $_POST['nb_per_page'] != 15 && $_POST['nb_per_page'] != 25 && $_POST['nb_per_page'] != 50 )) {
+    $errors[] = 'nombre d\'article par page invalide';
 }
 
 //Requête en fonction des inputs remplies
@@ -40,6 +42,18 @@ if(empty($errors)) {
         }
         $request .= ' products.category = :category';
     }
+
+    //Pagination
+
+    $request .= ' LIMIT :offset, :nb_per_page';
+    if(!empty($_GET['page'])) {
+        $current_page = htmlspecialchars($_GET['page']);
+    }else{
+        $current_page = 1;
+    }
+    $nb_per_page = htmlspecialchars($_POST['nb_per_page']);
+    $offset = ($current_page - 1)*$nb_per_page;
+
     //bindValue
     $select_products = $connexion->prepare($request);
     if(!empty($_POST['product_name'])) {
@@ -51,10 +65,12 @@ if(empty($errors)) {
     if(!empty($_POST['max-price'])) {
         $select_products->bindValue(':price', htmlspecialchars($_POST['max-price']));
     }
+    $select_products->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $select_products->bindValue(':nb_per_page', $nb_per_page, PDO::PARAM_INT);
     $select_products->execute();
     $products = $select_products->fetchAll();
-    
 
+    $nb_pages = ceil(count($products) / $nb_per_page);
 }
 
 ?>
@@ -77,10 +93,12 @@ if(empty($errors)) {
                 <h2 class="card-header">Rechercher un article</h2>
             <!-- Formulaire de recherche -->
                 <form method="post" action="liste.php" class="py-4 px-5">
+                    <!-- Nom produit -->
                     <div class="form-group">
                         <label for="product_name">Nom du produit :</label>
                         <input name="product_name" class="form-control" type="text" >
                     </div>
+                    <!-- Categorie -->
                     <div class="form-group">
                         <label for="category">Catégorie :</label>
                         <select class="form-control" name="category">
@@ -94,10 +112,12 @@ if(empty($errors)) {
                             ?>
                         </select>
                     </div>
+                    <!-- Prix max -->
                     <div class="form-group">
                         <label for="max-price">Prix maximum</label>        
                         <input class="form-control" name="max-price" type="number" min="0">
                     </div>
+                    <!-- Pagination -->
                     <div class="d-flex justify-content-between mt-4">
                         <button class="btn btn-primary col-4 height-38">Rechercher</button>
                         <label for="nb_per_page" class="col-5 label-1">Articles par page:</label>
@@ -109,6 +129,7 @@ if(empty($errors)) {
                         </select>
                     </div>
                 </form>
+                <!-- Fin Formulaire de recherche -->
             </div>
         </div>
     </section>
@@ -141,6 +162,15 @@ if(empty($errors)) {
                                 ?>
                             </div>
                         </div>
+                        <?php
+                    }
+                ?>
+            </div>
+            <div class="p-2">
+                <?php
+                    for($i = 1; $i <= $nb_pages; $i++) {
+                        ?>
+                        <a href="liste.php?page=<?= $i ?>"><?= $i.' | ' ?></a>
                         <?php
                     }
                 ?>
