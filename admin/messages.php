@@ -55,13 +55,12 @@ if(!empty($_GET)){
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
+            <?php
+        } else {
+            ?>
+            <div class="alert alert-danger" role="alert">
+                Vous n'avez pas les droits necessaires pour accéder à cette page.
+            </div>
             <?php
         }
     }

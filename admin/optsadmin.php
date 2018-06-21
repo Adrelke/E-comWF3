@@ -73,6 +73,12 @@ session_start();
               </div>
           </div>
           <?php
+        } else {
+          ?>
+          <div class="alert alert-danger" role="alert">
+              Vous n'avez pas les droits necessaires pour vous accéder à cette page.
+          </div>
+          <?php
         }
       }
     ?>

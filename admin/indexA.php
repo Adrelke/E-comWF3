@@ -20,11 +20,18 @@ if(!empty($_POST)){
         <?php
     }
     
-    if(isset($mdpCrypt) && password_verify($_POST['password'], $mdpCrypt) && $utilisateur[0]['role'] == 'ROLE_ADMIN'){
-        header('Location: optsadmin.php');
-        $_SESSION['email'] = htmlspecialchars($_POST['email']);
-        $_SESSION['pseudo'] = $utilisateur[0]['nickname'];
-        $_SESSION['role'] = $utilisateur[0]['role'];;
+    if(isset($mdpCrypt) && password_verify($_POST['password'], $mdpCrypt)){
+        if($utilisateur[0]['role'] == 'ROLE_ADMIN'){
+            header('Location: optsadmin.php');
+            $_SESSION['email'] = htmlspecialchars($_POST['email']);
+            $_SESSION['pseudo'] = $utilisateur[0]['nickname'];
+            $_SESSION['role'] = $utilisateur[0]['role'];
+        } elseif($utilisateur[0]['role'] == 'ROLE_VENDOR') {
+            header('Location: form_ajouter_article.php');
+            $_SESSION['email'] = htmlspecialchars($_POST['email']);
+            $_SESSION['pseudo'] = $utilisateur[0]['nickname'];
+            $_SESSION['role'] = $utilisateur[0]['role'];
+        }
     } else {
         ?>
         <div class="alert alert-danger" role="alert">
