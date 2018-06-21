@@ -34,6 +34,7 @@
                 </nav>
             </div>
             <div class="col-12 col-md-4 d-flex justify-content-end align-items-center">
+                <a class="option" href="panier.php"><i class="fas fa-shopping-basket fa-2x"></i></a>
                 <?php
                 if(empty($_SESSION)){
                     ?>
@@ -47,7 +48,7 @@
                         <?php
                     } elseif($_SESSION['role'] == "ROLE_VENDOR"){
                         ?>
-                        <a class="option" href="./admin/from_ajouter_article.php"><i class="fas fa-cogs fa-2x"></i></a>
+                        <a class="option" href="./admin/form_ajouter_article.php"><i class="fas fa-cogs fa-2x"></i></a>
                         <?php
                     }
                     ?>

@@ -88,7 +88,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                     if (empty($errors)) {
                         //on peut enregistrer dans la bdd
 
-                        $result = $connexion->prepare('INSERT INTO product (name, price, category, dispo, date_crea, photo)
+                        $result = $connexion->prepare('INSERT INTO products (name, price, category, dispo, date_crea, photo)
                                                                           VALUES (:produit, :prix, :categorie, "' . $dispo . '", "' . date('Y-m-d') . '", "' . $newName . '.' . $extension . '")');
 
                         //je protège mes variables utilisateur avec strip_tags() ou htmlspecialchars()
@@ -136,20 +136,23 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
 
 
 
-            //code pour supprimer l'article
+            //CODE POUR SUPPRIMER
             if(!empty($_GET)){
-                if(is_numeric($_GET['id'])){
-                    $supprimer = $connexion -> query('DELETE FROM product WHERE id= '.$_GET['id'].' ');
+                if(isset($_GET['id']) && is_numeric($_GET['id'])){   //CODE POUR SUPPRIMER L ARTICLE
+                    $supprimer = $connexion -> query('DELETE FROM products WHERE id= '.$_GET['id'].' ');
 
-                }else{
+                }elseif(isset($_GET['id_categorie']) && is_numeric($_GET['id_categorie'])) {
+                    //CODE POUR SUPPRIMER UNE CATEGORIE
+                    $supprimer = $connexion -> query('DELETE FROM category WHERE id= '.$_GET['id_categorie'].' ');
+                }else
+                {
                     ?>
                     <div class="alert alert-danger" role="alert">
-                        Impossible de Supprimer le produit
+                        IMPOSSIBLE DE SUPPRIMER
                     </div>
                     <?php
                 }
             }
-
 
 
 ?>
@@ -205,7 +208,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                     <ul class="list-group list-group-flush">
                             <?php
                             foreach($categories as $category) {
-                                echo '<li class="list-group-item"><div class="row"><div class="col-md-8">'.$category['category'].'</div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$category['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id='.$category['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
+                                echo '<li class="list-group-item"><div class="row"><div class="col-md-8">'.$category['category'].'</div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$category['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id_categorie='.$category['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
                             }
                             ?>
                     </ul>
@@ -234,7 +237,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                         <?php
                         //requete pour lister les produits
                         //seulement va me montrer les produits disponibles
-                        $rsl= $connexion->query('SELECT * FROM product');
+                        $rsl= $connexion->query('SELECT * FROM products');
                         $productos = $rsl ->fetchAll();
                         foreach ($productos as $product){
                             echo '<li class="list-group-item"><div class="row"><div class="col-md-8"><a href="voir_produit.php">'.$product['name'].'</a></div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$product['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id='.$product['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
