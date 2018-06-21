@@ -3,13 +3,34 @@ session_start();
 require_once('bdd.php');
 
 if(!empty($_GET['id_product'])){
-  $select_product = $connexion->prepare('SELECT name, price, dispo, date_crea, photo, category.category AS category_name FROM products INNER JOIN category ON products.category = category.id WHERE products.id = :id');
+  $select_product = $connexion->prepare('SELECT name, price, dispo, date_crea, photo, products.id AS product_id, products.category AS category_id, category.category AS category_name FROM products INNER JOIN category ON products.category = category.id WHERE products.id = :id');
   $select_product->bindValue(':id', htmlspecialchars($_GET['id_product']));
   $select_product->execute();
   $product = $select_product->fetch();
 }else{
   header('Location: liste.php');
 }
+
+$display_random_products = true;
+
+$count_same_category = $connexion->query('SELECT COUNT(id) FROM products WHERE category = "'.$product['category_id'].'" AND products.id != "'.$product['product_id'].'"');
+$count = $count_same_category->fetch();
+if($count = 2){
+  $random_index_1 = 0;
+  $random_index_2 = 1;
+}
+elseif($count > 2){
+  $random_index_1 = rand(0, $count - 1);
+  $random_index_2 = rand(0, $count - 1);
+    while($random_index_1 = $random_index_2){
+      $random_index_2 = rand(0, $count);
+    }
+}else{
+  $display_random_products = false;
+}
+var_dump($count);
+var_dump($display_random_products);
+
 ?>
 
 <!doctype html>
@@ -29,7 +50,7 @@ if(!empty($_GET['id_product'])){
   </head>
   <body>
       <?php include('header.php') ?>
-      <section class="container mt-5">
+      <section class="container mt-5 d-flex justify-content-between">
         <div class="col-5">
           <div class="card">
 
@@ -62,6 +83,15 @@ if(!empty($_GET['id_product'])){
 
           </div>
         </div>
+<?php if($display_random_products){ ?>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body small-card-height">
+              <img src="">
+            </div>
+          </div>
+        </div>
+<?php } ?>
       </section>
       <?php include('footer.php') ?>
     <!-- Optional JavaScript -->
