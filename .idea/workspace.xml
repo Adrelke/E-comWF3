@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8d622812-a89d-422c-817e-89d583146bbf" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/admin/form_ajouter_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/form_ajouter_article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/modifier_produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/modifier_produit.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +52,8 @@
       <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="224" column="100" lean-forward="true" selection-start-line="224" selection-start-column="100" selection-end-line="224" selection-end-column="100" />
+            <state relative-caret-position="315">
+              <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
               <folding>
                 <element signature="e#1#8#0" expanded="true" />
               </folding>
@@ -105,8 +104,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="23" />
-    <option name="y" value="229" />
+    <option name="x" value="185" />
+    <option name="y" value="350" />
     <option name="width" value="1486" />
     <option name="height" value="691" />
   </component>
@@ -179,15 +178,15 @@
       <option name="presentableId" value="Default" />
       <updated>1529480936849</updated>
       <workItem from="1529480938251" duration="21241000" />
-      <workItem from="1529564355095" duration="20551000" />
+      <workItem from="1529564355095" duration="21651000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41792000" />
+    <option name="totallyTimeSpent" value="42892000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="23" y="229" width="1486" height="691" extended-state="0" />
+    <frame x="185" y="350" width="1486" height="691" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24965987" />
@@ -363,8 +362,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="224" column="100" lean-forward="true" selection-start-line="224" selection-start-column="100" selection-end-line="224" selection-end-column="100" />
+        <state relative-caret-position="315">
+          <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
           <folding>
             <element signature="e#1#8#0" expanded="true" />
           </folding>
