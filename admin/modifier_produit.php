@@ -153,8 +153,9 @@ include('headerA.php');
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Photo du produit</label>
+
                                             <img class="card-img-top" src="../assets/img/<?= $article['photo'] ?>"
-                                                 alt="Image enregistré dans la bdd">
+                                                 alt="Image">
                                             <input type="file" name="photo" class="form-control-file"
                                                    id="exampleFormControlFile1">
                                             <smal id="emailHelp" class="form-text text-muted">Taille max: 1Mo</smal>

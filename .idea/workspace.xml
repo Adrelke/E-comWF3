@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d622812-a89d-422c-817e-89d583146bbf" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/admin/voir_produit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/form_ajouter_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/form_ajouter_article.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/modifier_produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/modifier_produit.php" afterDir="false" />
     </list>
@@ -53,8 +54,8 @@
       <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1836">
-              <caret line="219" column="4" lean-forward="true" selection-start-line="219" selection-start-column="4" selection-end-line="219" selection-end-column="4" />
+            <state relative-caret-position="714">
+              <caret line="207" column="8" lean-forward="true" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -62,10 +63,15 @@
       <file leaf-file-name="modifier_produit.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/modifier_produit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="72" column="199" selection-start-line="72" selection-start-column="199" selection-end-line="72" selection-end-column="199" />
+            <state relative-caret-position="162">
+              <caret line="155" selection-start-line="155" selection-end-line="155" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="voir_produit.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/voir_produit.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -82,8 +88,8 @@
         <option value="$PROJECT_DIR$/form_ajouter_article.php" />
         <option value="$PROJECT_DIR$/admin/optsadmin.php" />
         <option value="$PROJECT_DIR$/admin/liste_admin.php" />
-        <option value="$PROJECT_DIR$/admin/form_ajouter_article.php" />
         <option value="$PROJECT_DIR$/admin/modifier_produit.php" />
+        <option value="$PROJECT_DIR$/admin/form_ajouter_article.php" />
       </list>
     </option>
   </component>
@@ -139,7 +145,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../manytomany/ajouter_article.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../upload/traitement.php" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -171,12 +177,12 @@
       <option name="presentableId" value="Default" />
       <updated>1529480936849</updated>
       <workItem from="1529480938251" duration="21241000" />
-      <workItem from="1529564355095" duration="14548000" />
+      <workItem from="1529564355095" duration="15164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35789000" />
+    <option name="totallyTimeSpent" value="36405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -333,17 +339,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
+    <entry file="file://$PROJECT_DIR$/../upload/traitement.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="219" column="4" lean-forward="true" selection-start-line="219" selection-start-column="4" selection-end-line="219" selection-end-column="4" />
+        <state relative-caret-position="782">
+          <caret line="100" column="75" selection-start-line="65" selection-start-column="24" selection-end-line="100" selection-end-column="75" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="207" column="8" lean-forward="true" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/voir_produit.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/modifier_produit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="72" column="199" selection-start-line="72" selection-start-column="199" selection-end-line="72" selection-end-column="199" />
+        <state relative-caret-position="162">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
         </state>
       </provider>
     </entry>
