@@ -1,0 +1,27 @@
+.no-margin{
+    margin: 0;
+}
+.line-center{
+    line-height: 24px;
+    vertical-align: middle;
+}
+.dispo-true{
+    color: #23ab26;
+}
+.dispo-false{
+    color: #b81616;
+}
+.img-product{
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 300px;
+}
+.price{
+    color: #b81616;
+    font-size: 30px;
+    margin-top: 13px;
+}
+.height-45{
+    height: 45px;
+}
