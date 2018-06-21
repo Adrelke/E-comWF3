@@ -2,7 +2,7 @@ body{
     font-family: 'Nunito', sans-serif;
 }
 .no-margin{
-    margin-bottom: 0px !important;
+    margin: 0px !important;
 }
 .img-product{
     height: auto; 

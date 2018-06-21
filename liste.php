@@ -23,6 +23,12 @@ $categories = $select_categories->fetchAll();
         $max_price = htmlspecialchars($_GET['max_price']);
     }
 
+    if(!empty($_POST['order'])){
+        $order = htmlspecialchars($_POST['order']); 
+    }elseif(!empty($_GET['order'])){
+        $order = htmlspecialchars($_GET['order']);
+    }
+
 $errors = [];
 if(!empty($_POST)){
     if(empty($_POST['nb_per_page']) || !is_numeric($_POST['nb_per_page'])) {
@@ -37,9 +43,10 @@ if(!empty($_POST)){
 //Requêtes en fonction des inputs remplies
 if(empty($errors)) {
     $first_condition = true;
-    $request ='SELECT * FROM products INNER JOIN category ON products.category = category.id ';
+    $request ='SELECT photo, products.id AS product_id, name, products.category AS products_category, category.category AS category_name, price, dispo FROM products INNER JOIN category ON products.category = category.id ';
     $request_count = 'SELECT COUNT(id) AS nb FROM products ';
-    //Concatenation
+
+    //Concatenation des requetes
     if(isset($product_name)) {
         if(!$first_condition) {
             $request .= ' AND';
@@ -64,7 +71,7 @@ if(empty($errors)) {
         $request .= ' price <= :price';
         $request_count .= ' price <= :price';
     }
-    if($search_category != 'all') {
+    if(isset($search_category) && $search_category != 'all') {
         if(!$first_condition) {
             $request .= ' AND';
             $request_count .= ' AND';
@@ -75,6 +82,14 @@ if(empty($errors)) {
         }
         $request .= ' products.category = :category';
         $request_count .= ' products.category = :category';
+    }
+    if(isset($order)) {
+        if($order == 'ascending') {
+            $request .= ' ORDER BY price';
+        }
+        if($order == 'descending') {
+            $request .= ' ORDER BY price DESC';
+        }
     }
 
 
@@ -102,7 +117,7 @@ if(empty($errors)) {
         $select_products->bindValue(':product_name', '%'.htmlspecialchars($product_name).'%');
         $count_products->bindValue(':product_name', '%'.htmlspecialchars($product_name).'%');
     }
-    if($search_category != 'all') {
+    if(isset($search_category) && $search_category != 'all') {
         $select_products->bindValue(':category', htmlspecialchars($search_category));
         $count_products->bindValue(':category', htmlspecialchars($search_category));
     }
@@ -166,19 +181,29 @@ if(empty($errors)) {
                         </select>
                     </div>
                     <!-- Prix max -->
-                    <div class="form-group">
-                        <label for="max_price">Prix maximum</label>        
-                        <input value="<?php if(!empty($_POST['max_price'])){ echo $_POST['max_price']; } ?>" class="form-control" name="max_price" type="number" min="0">
+                    <div class="d-flex justify-content-between">
+                        <div class="col-5 pl-0">
+                            <label for="max_price">Prix maximum</label>        
+                            <input value="<?php if(!empty($_POST['max_price'])){ echo $_POST['max_price']; } ?>" class="form-control" name="max_price" type="number" min="0">
+                        </div>
+                        <div class="col-7 pr-0">
+                            <label for="order">Trier par</label>
+                            <select class="form-control" name="order">
+                                <option <?php if(isset($order) && $order == 'ascending'){ echo 'selected'; } ?> value="ascending">Prix Croissant</option>
+                                <option <?php if(isset($order) && $order == 'descending'){ echo 'selected'; } ?> value="descending">Prix Décroissant</option>
+                                <option <?php if(!isset($order) || ( isset($order) && $order != 'ascending' && $order != 'descending') ){ echo 'selected'; } ?> >Aucun Tri</option>
+                            </select>
+                        </div>
                     </div>
                     <!-- Pagination -->
                     <div class="d-flex justify-content-between mt-4">
                         <button class="btn btn-primary col-4 height-38">Rechercher</button>
                         <label for="nb_per_page" class="col-5 label-1">Articles par page:</label>
                         <select class="form-control col-3 height-38" name="nb_per_page">
-                            <option value="5">5</option>
-                            <option value="15">15</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
+                            <option <?php if($nb_per_page == 5){ echo 'selected'; } ?> value="5">5</option>
+                            <option <?php if($nb_per_page == 15){ echo 'selected'; } ?> value="15">15</option>
+                            <option <?php if($nb_per_page == 25){ echo 'selected'; } ?> value="25">25</option>
+                            <option <?php if($nb_per_page == 50){ echo 'selected'; } ?> value="50">50</option>
                         </select>
                     </div>
                 </form>
@@ -188,6 +213,7 @@ if(empty($errors)) {
     </section>
 
 <?php if(empty($errors)){ ?>
+    <!-- Afficher les résultats -->
     <section class="container">
         <div class="card">
             <div class="card-header py-3 px-5">
@@ -201,7 +227,8 @@ if(empty($errors)) {
                             <div class="col-4"><img class="img-product" src="assets/img/<?= $product['photo'] ?>" alt="photo du produit"></div>
                             <div class="col-6 p-5">
                                 <h3><?= $product['name'] ?></h3>
-                                <small><?= $product['category'] ?></small>
+                                <small><?= $product['category_name'] ?></small><br>
+                                <a href="fiche_article.php?id_product=<?= $product['product_id'] ?>"><small>Voir la fiche de l'article</small></a>
                                 
                             </div>
                             <div class="col-2 d-flex flex-column justify-content-center">
@@ -219,6 +246,7 @@ if(empty($errors)) {
                     }
                 ?>
             </div>
+            <!-- Liste des liens de pagination -->
             <div class="p-2">
                 <?php
                     for($i = 1; $i <= $nb_pages; $i++) {
@@ -230,7 +258,10 @@ if(empty($errors)) {
                             $url .= '&category=' . $search_category;
                         }
                         if(isset($max_price)){
-                            $url .= 'max_price=' . $max_price;
+                            $url .= '&max_price=' . $max_price;
+                        }
+                        if(isset($order)){
+                            $url .= '&order=' .$order;
                         }
                         ?>
                         <a href="<?= $url ?>"><?= $i.' | ' ?></a>
