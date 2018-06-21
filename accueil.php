@@ -50,13 +50,13 @@ $info = $resultat->fetch();
                                 <img src="./assets/img/<?php echo $info['photo']?>" alt="First slide" name="photo1">
                             </div>
                             <div class="carousel-item">
-                                <img src="http://via.placeholder.com/1100x600" alt="Second slide" name="photo2">
+                                <img src="./assets/img/<?php echo $info['photo2']?>" alt="Second slide" name="photo2">
                             </div>
                             <div class="carousel-item">
-                                <img src="http://via.placeholder.com/1100x600" alt="Third slide" name="photo3">
+                                <img src="./assets/img/<?php echo $info['photo3']?>" alt="Third slide" name="photo3">
                             </div>
                             <div class="carousel-item">
-                                <img src="http://via.placeholder.com/1100x600" alt="Third slide" name="photo4">
+                                <img src="./assets/img/<?php echo $info['photo4']?>" alt="Third slide" name="photo4">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">

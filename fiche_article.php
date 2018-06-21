@@ -1,6 +1,15 @@
 <?php
 session_start();
 require_once('bdd.php');
+
+if(!empty($_GET['id_product'])){
+  $select_product = $connexion->prepare('SELECT name, price, dispo, date_crea, photo, category.category AS category_name FROM products INNER JOIN category ON products.category = category.id WHERE products.id = :id');
+  $select_product->bindValue(':id', htmlspecialchars($_GET['id_product']));
+  $select_product->execute();
+  $product = $select_product->fetch();
+}else{
+  header('Location: liste.php');
+}
 ?>
 
 <!doctype html>
@@ -16,9 +25,44 @@ require_once('bdd.php');
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/fiche-article.css">
   </head>
   <body>
       <?php include('header.php') ?>
+      <section class="container mt-5">
+        <div class="col-5">
+          <div class="card">
+
+              <div class="card-header">
+                <div class="d-flex justify-content-center">
+                  <h5 class="no-margin"><?= $product['name'] ?></h5>
+                </div>
+              </div>
+
+              <div class="card-body d-flex flex-column justify-content-center">
+              <?php
+                if($product['dispo']) {
+                    echo '<small class="line-center dispo-true">Disponible en magasin</small>';
+                }else{
+                    echo '<small class="dispo-false">En rupture de stock</small>';
+                }
+              ?>
+                <div class="row justify-content-center">
+                  <img class="img-product mt-2" src="assets/img/<?= $product['photo'] ?>" alt="photo du produit">
+                </div>
+                <div class="d-flex justify-content-center">
+                  <small class="text-center"><?= $product['category_name'] ?></small>
+                </div>
+                <div class="d-flex justify-content-around mt-2">
+                  <span class="price height-45 m-0"><?= $product['price'] ?> €</span>
+                  <button class="btn btn-secondary height-45">Ajouter au panier</button>
+                </div>
+              </div>
+              
+
+          </div>
+        </div>
+      </section>
       <?php include('footer.php') ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
