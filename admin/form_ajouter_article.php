@@ -45,7 +45,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
 
                     $errors = [];
                     //verifications des données
-                    if (empty($_POST['name']) or mb_strlen($_POST['name']) < 3 or mb_strlen($_POST['name']) > 20) {
+                    if (empty($_POST['name']) or mb_strlen($_POST['name']) < 3 or mb_strlen($_POST['name']) > 40) {
                         //le paramètre n'existe pas, est trop long ou est trop court
                         $errors['name'] = 'Nom absent, ou incorrecte';
                     }
@@ -131,6 +131,30 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
 
                 }
 
+                //CODE POUR MODIFIER LA CATEGORIE
+                if (isset($_POST['modif_cat'])){
+                    if (empty($_POST['name_categorie']) or mb_strlen($_POST['name_categorie']) < 3 or mb_strlen($_POST['name_categorie']) > 20) {
+                        //le paramètre n'existe pas, est trop long ou est trop court
+                        ?>
+                        <div class="alert alert-danger" role="alert">
+                            Categorie manquante, trop long ou trop court
+                        </div>
+                        <?php
+                    }else{
+                        //ajouter la categorie
+                        $modif_cat = $connexion->prepare('UPDATE category SET category = :cat WHERE id=:id_cat');
+                        $modif_cat->bindValue(':cat', strip_tags($_POST['name_categorie']));
+                        $modif_cat->bindValue(':id_cat', strip_tags($_POST['cat_id']));
+                        $modif_cat->execute()
+                        ?>
+                        <div class="alert alert-success" role="alert">
+                            La categorié a bien été modifiée
+                        </div>
+                        <?php
+                    }
+
+                }
+
 
             }
 
@@ -208,7 +232,37 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                     <ul class="list-group list-group-flush">
                             <?php
                             foreach($categories as $category) {
-                                echo '<li class="list-group-item"><div class="row"><div class="col-md-8">'.$category['category'].'</div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$category['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id_categorie='.$category['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
+                                echo '<li class="list-group-item"><div class="row"><div class="col-md-8">'.$category['category'].'</div> <div class="text-right col-md-4" ><a  data-toggle="modal" data-target="#categorie'.$category['id'].'" href="#"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id_categorie='.$category['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
+                                ?>
+                                <!-- Modal -->
+                                <div class="modal fade" id="categorie<?= $category['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modification Categorie</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post">
+                                                    <!-- FORMULAIRE DE MODIFICACION DE CATEGORIE -->
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Nom de la Catégorie</label>
+                                                        <input type="text" name="name_categorie" class="form-control" >
+                                                    </div>
+                                                        <input type="hidden" name="cat_id" value="<?=$category['id']?>">
+                                                    <button type="submit" name="modif_cat" class="btn btn-primary">Ajouter</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
                             }
                             ?>
                     </ul>

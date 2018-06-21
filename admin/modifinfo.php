@@ -52,11 +52,11 @@ if(!empty($_SESSION)){
 
                 $errors = [];
                 ?>
-                <pre>
+                <!-- <pre>
                 <?php
-                print_r($_FILES);
+                //print_r($_FILES);
                 ?>
-                </pre>
+                </pre> -->
 
                 <?php               
                
@@ -84,7 +84,7 @@ if(!empty($_SESSION)){
                 if($_FILES['photo2']['error'] == 0){
                     $masSize = 1048576;
                     $fileInfo=pathinfo($_FILES['photo2']['name']);
-                    $extension=$fileInfo['extension'];
+                    $extension2=$fileInfo['extension'];
                     $extensions_autorisees=['jpg','png','jpeg'];
                     $newName1 = md5(uniqid(rand(),true));
 
@@ -94,17 +94,17 @@ if(!empty($_SESSION)){
                     $errors[] = 'error de transfert';
                     } elseif ($_FILES['photo2']['size'] > $masSize) {
                     $errors[] = 'Image trop grande';
-                    }elseif(!in_array($extension,$extensions_autorisees)){
+                    }elseif(!in_array($extension2,$extensions_autorisees)){
                     $errors[] = 'Mauvais extension, Les extensiones autorisees sont: jpg,png et jpeg';
                     }else{
                     //tout est bon, donc je peux enregistrer l'image dans mon dossier
-                    move_uploaded_file($_FILES['photo2']['tmp_name'],'../assets/img/'.$newName1.'.'.$extension);
+                    move_uploaded_file($_FILES['photo2']['tmp_name'],'../assets/img/'.$newName1.'.'.$extension2);
                     }
                 }
                 if($_FILES['photo3']['error'] == 0){
                     $masSize = 1048576;
                     $fileInfo=pathinfo($_FILES['photo3']['name']);
-                    $extension=$fileInfo['extension'];
+                    $extension3=$fileInfo['extension'];
                     $extensions_autorisees=['jpg','png','jpeg'];
                     $newName2 = md5(uniqid(rand(),true));
 
@@ -114,17 +114,17 @@ if(!empty($_SESSION)){
                     $errors[] = 'error de transfert';
                     } elseif ($_FILES['photo3']['size'] > $masSize) {
                     $errors[] = 'Image trop grande';
-                    }elseif(!in_array($extension,$extensions_autorisees)){
+                    }elseif(!in_array($extension3,$extensions_autorisees)){
                     $errors[] = 'Mauvais extension, Les extensiones autorisees sont: jpg,png et jpeg';
                     }else{
                     //tout est bon, donc je peux enregistrer l'image dans mon dossier
-                    move_uploaded_file($_FILES['photo3']['tmp_name'],'../assets/img/'.$newName2.'.'.$extension);
+                    move_uploaded_file($_FILES['photo3']['tmp_name'],'../assets/img/'.$newName2.'.'.$extension3);
                     }
                 }
                 if($_FILES['photo4']['error'] == 0){
                     $masSize = 1048576;
                     $fileInfo=pathinfo($_FILES['photo4']['name']);
-                    $extension=$fileInfo['extension'];
+                    $extension4=$fileInfo['extension'];
                     $extensions_autorisees=['jpg','png','jpeg'];
                     $newName3 = md5(uniqid(rand(),true));
 
@@ -134,15 +134,15 @@ if(!empty($_SESSION)){
                     $errors[] = 'error de transfert';
                     } elseif ($_FILES['photo4']['size'] > $masSize) {
                     $errors[] = 'Image trop grande';
-                    }elseif(!in_array($extension,$extensions_autorisees)){
+                    }elseif(!in_array($extension4,$extensions_autorisees)){
                     $errors[] = 'Mauvais extension, Les extensiones autorisees sont: jpg,png et jpeg';
                     }else{
                     //tout est bon, donc je peux enregistrer l'image dans mon dossier
-                    move_uploaded_file($_FILES['photo4']['tmp_name'],'../assets/img/'.$newName3.'.'.$extension);
+                    move_uploaded_file($_FILES['photo4']['tmp_name'],'../assets/img/'.$newName3.'.'.$extension4);
                     }
                 }
 
-                var_dump($errors);
+                //var_dump($errors);
                 if(empty($errors)){
                     //si le tableau $errors est vide, on peut enregistrer dans la bdd
                     $requete = 'UPDATE shops SET';
@@ -178,13 +178,13 @@ if(!empty($_SESSION)){
                     $resultat->bindValue(':photo', $newName.'.'.$extension);
                     }
                     if(!empty($_FILES['photo2']) && $_FILES['photo2']['error'] == 0){
-                    $resultat->bindValue(':photo2', $newName1.'.'.$extension);
+                    $resultat->bindValue(':photo2', $newName1.'.'.$extension2);
                     }
                     if(!empty($_FILES['photo3']) && $_FILES['photo3']['error'] == 0 ){
-                    $resultat->bindValue(':photo3', $newName2.'.'.$extension);
+                    $resultat->bindValue(':photo3', $newName2.'.'.$extension3);
                     }
                     if(!empty($_FILES['photo4']) && $_FILES['photo4']['error'] == 0){
-                    $resultat->bindValue(':photo4', $newName3.'.'.$extension);
+                    $resultat->bindValue(':photo4', $newName3.'.'.$extension4);
                     }
                     if($resultat->execute()){
                         echo '<p class="alert alert-success">Infos modifiées!</p>';
