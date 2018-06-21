@@ -131,6 +131,30 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
 
                 }
 
+                //CODE POUR MODIFIER LA CATEGORIE
+                if (isset($_POST['modif_cat'])){
+                    if (empty($_POST['name_categorie']) or mb_strlen($_POST['name_categorie']) < 3 or mb_strlen($_POST['name_categorie']) > 20) {
+                        //le paramètre n'existe pas, est trop long ou est trop court
+                        ?>
+                        <div class="alert alert-danger" role="alert">
+                            Categorie manquante, trop long ou trop court
+                        </div>
+                        <?php
+                    }else{
+                        //ajouter la categorie
+                        $modif_cat = $connexion->prepare('UPDATE category SET category = :cat WHERE id=:id_cat');
+                        $modif_cat->bindValue(':cat', strip_tags($_POST['name_categorie']));
+                        $modif_cat->bindValue(':id_cat', strip_tags($_POST['cat_id']));
+                        $modif_cat->execute()
+                        ?>
+                        <div class="alert alert-success" role="alert">
+                            La categorié a bien été modifiée
+                        </div>
+                        <?php
+                    }
+
+                }
+
 
             }
 
@@ -221,14 +245,14 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="get" action="form_ajouter_article.php">
+                                                <form method="post">
                                                     <!-- FORMULAIRE DE MODIFICACION DE CATEGORIE -->
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Nom de la Catégorie</label>
                                                         <input type="text" name="name_categorie" class="form-control" >
                                                     </div>
-                                                        <input type="hidden" name="">
-                                                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                                                        <input type="hidden" name="cat_id" value="<?=$category['id']?>">
+                                                    <button type="submit" name="modif_cat" class="btn btn-primary">Ajouter</button>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
