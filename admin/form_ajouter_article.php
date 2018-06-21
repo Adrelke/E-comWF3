@@ -110,6 +110,24 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                 }
                 //CODE POUR AJOUTE UNE CATEGORIE
                 if (isset($_POST['form_categorie'])){
+                    if (empty($_POST['name_categorie']) or mb_strlen($_POST['name_categorie']) < 3 or mb_strlen($_POST['name_categorie']) > 20) {
+                        //le paramètre n'existe pas, est trop long ou est trop court
+                        ?>
+                        <div class="alert alert-danger" role="alert">
+                            Categorie manquante, trop long ou trop court
+                        </div>
+                        <?php
+                    }else{
+                        //ajouter la categorie
+                        $nouvelle_cat = $connexion->prepare('INSERT INTO category (category) VALUES (:cat)');
+                        $nouvelle_cat->bindValue(':cat', strip_tags($_POST['name_categorie']));
+                        $nouvelle_cat->execute()
+                        ?>
+                        <div class="alert alert-success" role="alert">
+                            Categorie bien ajoutée
+                        </div>
+                        <?php
+                    }
 
                 }
 
