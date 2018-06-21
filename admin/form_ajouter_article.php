@@ -1,6 +1,13 @@
 <?php
     include('../bdd.php');
+
     session_start();
+
+    if(isset($_GET['deconnexion'])){
+        session_destroy();
+        header('Location: ../accueil.php');
+    
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,25 +22,12 @@
     <title>Contact</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="../accueil.php">Accueil<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav_item active">
-                <a class="nav-link" href="adminadduser.php?deconnexion">Deconnexion<span class="sr-only">(current)</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<br>
-<br>
 
 <?php
- if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
- {
-?>
+if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
+{
+    include('headerA.php');
+    ?>
 <div class="container">
 
             <div class="card">
@@ -53,14 +47,14 @@
                             <select class="form-control" name="category" id="exampleFormControlSelect1">
                                 <option value="">Selectionne une categorie</option>
                                 <?php
-                                    //requete pour afficher les categories
+                                //requete pour afficher les categories
                                 $resultat = $connexion->query('SELECT * FROM category');
                                 $resultat->execute();
                                 $categories = $resultat->fetchAll();
-                                foreach ($categories as $categorie){
-                                ?>
-                                <option value="<?=$categorie['id']?>"><?=$categorie['category']?></option>
-                                <?php
+                                foreach ($categories as $categorie) {
+                                    ?>
+                                    <option value="<?=$categorie['id']?>"><?=$categorie['category']?></option>
+                                    <?php
                                 }
                                 ?>
                             </select>
@@ -80,13 +74,13 @@
             </div>
 
 </div>
-<?PHP
+<?php
     //si on fait ""submit""
-            if(!empty($_POST)) {
+            if (!empty($_POST)) {
                 //le formulaire été envoyé:
                 $errors = [];
                 //verifications des données
-                if (empty($_POST['name']) OR mb_strlen($_POST['name']) < 3 OR mb_strlen($_POST['name']) > 20) {
+                if (empty($_POST['name']) or mb_strlen($_POST['name']) < 3 or mb_strlen($_POST['name']) > 20) {
                     //le paramètre n'existe pas, est trop long ou est trop court
                     $errors['name'] = 'Nom absent, ou incorrecte';
                 }
@@ -102,7 +96,7 @@
                 $fileInfo=pathinfo($_FILES['photo']['name']);
                 $extension=$fileInfo['extension'];
                 $extensions_autorisees=['jpg','png','jpeg'];
-                $newName = md5(uniqid(rand(),true));
+                $newName = md5(uniqid(rand(), true));
 
                 if (empty($_FILES)) {
                     $errors[] = 'Image manquante';
@@ -110,20 +104,22 @@
                     $errors[] = 'error de transfert';
                 } elseif ($_FILES['photo']['size'] > $masSize) {
                     $errors[] = 'Image trop grande';
-                }elseif(!in_array($extension,$extensions_autorisees)){
+                } elseif (!in_array($extension, $extensions_autorisees)) {
                     $errors[] = 'Mauvais extension, Les extensiones autorisees sont: jpg,png et jpeg';
-                }else{
+                } else {
                     //tout est bon, donc je peux enregistrer l'image dans mon dossier
-                    move_uploaded_file($_FILES['photo']['tmp_name'],'../assets/img/'.$newName.'.'.$extension);
+                    move_uploaded_file($_FILES['photo']['tmp_name'], '../assets/img/'.$newName.'.'.$extension);
                 }
 
                 //donner le valeur a dispo
-                if($_POST['dispo']=='on'){
+                if ($_POST['dispo']=='on') {
                     $dispo=1;
-                }else{$dispo=0;}
+                } else {
+                    $dispo=0;
+                }
 
 
-                if(empty($errors)) {
+                if (empty($errors)) {
                     //on peut enregistrer dans la bdd
 
                     $result = $connexion->prepare('INSERT INTO product (name, price, category, dispo, date_crea, photo)
@@ -142,14 +138,11 @@
                         </div>
                         <?php
                     }
-                }else{
+                } else {
                     echo implode('<br>', $errors);
                 }
-
-
             }
-
-}else {
+ }else {
      ?>
      <br>
      <br>

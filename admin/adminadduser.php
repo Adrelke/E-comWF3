@@ -96,26 +96,11 @@ if(!empty($_POST)){
 <?php
 if(!empty($_SESSION)){
     if($_SESSION['role'] == 'ROLE_ADMIN'){
-
+        include('headerA.php');
     ?>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="../accueil.php">Accueil<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav_item active">
-            <a class="nav-link" href="adminadduser.php?deconnexion">Deconnexion<span class="sr-only">(current)</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-
-
-    <div class="container">
+    <div class="container mt-5">
     <form method="POST">
       <div class="form-group">
         <label for="exampleInputPassword1">Pseudo</label>
@@ -142,12 +127,19 @@ if(!empty($_SESSION)){
     </div>
 
     <?php
+    } else {
+        ?>
+        <div class="alert alert-danger" role="alert">
+            Vous n'avez pas les droits necessaires pour accéder à cette page.
+        </div>
+        <?php
     }       
 }else{
     echo 'Erreur';
 }
 ?>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
 
