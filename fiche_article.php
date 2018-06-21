@@ -11,25 +11,10 @@ if(!empty($_GET['id_product'])){
   header('Location: liste.php');
 }
 
-$display_random_products = true;
 
-$count_same_category = $connexion->query('SELECT COUNT(id) FROM products WHERE category = "'.$product['category_id'].'" AND products.id != "'.$product['product_id'].'"');
-$count = $count_same_category->fetch();
-if($count = 2){
-  $random_index_1 = 0;
-  $random_index_2 = 1;
-}
-elseif($count > 2){
-  $random_index_1 = rand(0, $count - 1);
-  $random_index_2 = rand(0, $count - 1);
-    while($random_index_1 = $random_index_2){
-      $random_index_2 = rand(0, $count);
-    }
-}else{
-  $display_random_products = false;
-}
-var_dump($count);
-var_dump($display_random_products);
+$select_random_products = $connexion->query('SELECT * FROM products ORDER BY  RAND() LIMIT 2');
+$random_products = $select_random_products->fetchAll();
+
 
 ?>
 
@@ -83,15 +68,27 @@ var_dump($display_random_products);
 
           </div>
         </div>
-<?php if($display_random_products){ ?>
         <div class="col-4">
           <div class="card">
             <div class="card-body small-card-height">
-              <img src="">
+              <img class="min-img float-left" src="assets/img/<?= $random_products[0]['photo'] ?>">
+              <div class="d-flex flex-column justify-content-around height-190">
+                <span class="price text-center"><?= $random_products[0]['price'] ?> €</span>
+                <a class="text-center" href="fiche_article.php?id_product=<?= $random_products[0]['id'] ?>">Voir la fiche</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card margin-30">
+          <div class="card-body small-card-height">
+              <img class="min-img float-left" src="assets/img/<?= $random_products[1]['photo'] ?>">
+              <div class="d-flex flex-column justify-content-around height-190">
+                <span class="price text-center"><?= $random_products[1]['price'] ?> €</span>
+                <a class="text-center" href="fiche_article.php?id_product=<?= $random_products[1]['id'] ?>">Voir la fiche</a>
+              </div>
             </div>
           </div>
         </div>
-<?php } ?>
       </section>
       <?php include('footer.php') ?>
     <!-- Optional JavaScript -->
