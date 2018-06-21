@@ -1,6 +1,15 @@
 <?php
 session_start();
 require_once('bdd.php');
+
+if(!empty($_GET['id_product'])){
+  $select_product = $connexion->prepare('SELECT * FROM products WHERE id = :id');
+  $select_product->bindValue(':id', htmlspecialchars($_GET['id_product']));
+  $select_product->execute();
+  $product = $select_product->fetchAll();
+}else{
+  echo 'TOUCHE PAS A L\'URL';
+}
 ?>
 
 <!doctype html>
@@ -19,6 +28,7 @@ require_once('bdd.php');
   </head>
   <body>
       <?php include('header.php') ?>
+      
       <?php include('footer.php') ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
