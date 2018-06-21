@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d622812-a89d-422c-817e-89d583146bbf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/voir_produit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/form_ajouter_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/form_ajouter_article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/modifier_produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/modifier_produit.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,20 +49,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form_ajouter_article.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="207" column="8" lean-forward="true" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
+            <state relative-caret-position="-93">
+              <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modifier_produit.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modifier_produit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/modifier_produit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="155" selection-start-line="155" selection-end-line="155" />
+            <state relative-caret-position="502">
+              <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
             </state>
           </provider>
         </entry>
@@ -177,12 +175,12 @@
       <option name="presentableId" value="Default" />
       <updated>1529480936849</updated>
       <workItem from="1529480938251" duration="21241000" />
-      <workItem from="1529564355095" duration="15164000" />
+      <workItem from="1529564355095" duration="16599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36405000" />
+    <option name="totallyTimeSpent" value="37840000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -346,20 +344,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="207" column="8" lean-forward="true" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/voir_produit.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/modifier_produit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
+        <state relative-caret-position="502">
+          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/form_ajouter_article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-93">
+          <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
         </state>
       </provider>
     </entry>

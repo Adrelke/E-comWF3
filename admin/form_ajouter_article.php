@@ -38,74 +38,83 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
 
     //si on fait ""submit""
             if (!empty($_POST)) {
-                //le formulaire été envoyé:
-                $errors = [];
-                //verifications des données
-                if (empty($_POST['name']) or mb_strlen($_POST['name']) < 3 or mb_strlen($_POST['name']) > 20) {
-                    //le paramètre n'existe pas, est trop long ou est trop court
-                    $errors['name'] = 'Nom absent, ou incorrecte';
-                }
-                if (empty($_POST['price']) or !is_numeric($_POST['price']) or $_POST['price'] > 2000) {
-                    $errors['price'] = 'Prix absence ou est incorrecte';
-                }
 
-                if (empty($_POST['category']) or !is_numeric($_POST['category'])) {
-                    $errors['category'] = 'categorie incorrecte';
-                }
-                //verification du FILE
-                $masSize = 1048576;
-                $fileInfo=pathinfo($_FILES['photo']['name']);
-                $extension=$fileInfo['extension'];
-                $extensions_autorisees=['jpg','png','jpeg'];
-                $newName = md5(uniqid(rand(), true));
+                    //CODE POUR AJOUTER LES ARTICLES
+                if (isset($_POST['form_produit'])) {
 
-                if (empty($_FILES)) {
-                    $errors[] = 'Image manquante';
-                } elseif ($_FILES['photo']['error'] != 0) {
-                    $errors[] = 'error de transfert';
-                } elseif ($_FILES['photo']['size'] > $masSize) {
-                    $errors[] = 'Image trop grande';
-                } elseif (!in_array($extension, $extensions_autorisees)) {
-                    $errors[] = 'Mauvais extension, Les extensiones autorisees sont: jpg,png et jpeg';
-                } else {
-                    //tout est bon, donc je peux enregistrer l'image dans mon dossier
-                    move_uploaded_file($_FILES['photo']['tmp_name'], '../assets/img/'.$newName.'.'.$extension);
-                }
 
-                //donner le valeur a dispo
+                    $errors = [];
+                    //verifications des données
+                    if (empty($_POST['name']) or mb_strlen($_POST['name']) < 3 or mb_strlen($_POST['name']) > 20) {
+                        //le paramètre n'existe pas, est trop long ou est trop court
+                        $errors['name'] = 'Nom absent, ou incorrecte';
+                    }
+                    if (empty($_POST['price']) or !is_numeric($_POST['price']) or $_POST['price'] > 2000) {
+                        $errors['price'] = 'Prix absence ou est incorrecte';
+                    }
 
-                if(isset($_POST['dispo'])) {
-                    $dispo = 1;
-                }
-                else{
-                        $dispo=0;
+                    if (empty($_POST['category']) or !is_numeric($_POST['category'])) {
+                        $errors['category'] = 'categorie incorrecte';
+                    }
+                    //verification du FILE
+                    $masSize = 1048576;
+                    $fileInfo = pathinfo($_FILES['photo']['name']);
+                    $extension = $fileInfo['extension'];
+                    $extensions_autorisees = ['jpg', 'png', 'jpeg'];
+                    $newName = md5(uniqid(rand(), true));
+
+                    if (empty($_FILES)) {
+                        $errors[] = 'Image manquante';
+                    } elseif ($_FILES['photo']['error'] != 0) {
+                        $errors[] = 'error de transfert';
+                    } elseif ($_FILES['photo']['size'] > $masSize) {
+                        $errors[] = 'Image trop grande';
+                    } elseif (!in_array($extension, $extensions_autorisees)) {
+                        $errors[] = 'Mauvais extension, Les extensiones autorisees sont: jpg,png et jpeg';
+                    } else {
+                        //tout est bon, donc je peux enregistrer l'image dans mon dossier
+                        move_uploaded_file($_FILES['photo']['tmp_name'], '../assets/img/' . $newName . '.' . $extension);
+                    }
+
+                    //donner le valeur a dispo
+
+                    if (isset($_POST['dispo'])) {
+                        $dispo = 1;
+                    } else {
+                        $dispo = 0;
                     }
 
 
-                if (empty($errors)) {
-                    //on peut enregistrer dans la bdd
+                    if (empty($errors)) {
+                        //on peut enregistrer dans la bdd
 
-                    $result = $connexion->prepare('INSERT INTO product (name, price, category, dispo, date_crea, photo)
-                                                              VALUES (:produit, :prix, :categorie, "'.$dispo.'", "' . date('Y-m-d') . '", "' . $newName . '.' . $extension . '")');
+                        $result = $connexion->prepare('INSERT INTO product (name, price, category, dispo, date_crea, photo)
+                                                                          VALUES (:produit, :prix, :categorie, "' . $dispo . '", "' . date('Y-m-d') . '", "' . $newName . '.' . $extension . '")');
 
-                    //je protège mes variables utilisateur avec strip_tags() ou htmlspecialchars()
-                    $result->bindValue(':produit', strip_tags($_POST['name']));
-                    $result->bindValue(':prix', strip_tags($_POST['price']));
-                    $result->bindValue(':categorie', strip_tags($_POST['category']));
+                        //je protège mes variables utilisateur avec strip_tags() ou htmlspecialchars()
+                        $result->bindValue(':produit', strip_tags($_POST['name']));
+                        $result->bindValue(':prix', strip_tags($_POST['price']));
+                        $result->bindValue(':categorie', strip_tags($_POST['category']));
 
-                    //si $resultat->execute() == true , l'article a bien été enregistré
-                    $result->execute()
+                        //si $resultat->execute() == true , l'article a bien été enregistré
+                        $result->execute()
                         ?>
                         <div class="alert alert-success" role="alert">
                             Produit bien ajoute
                         </div>
                         <?php
 
-                }else{
-                    echo implode('<br>', $errors);
+                    } else {
+                        echo implode('<br>', $errors);
                     }
                 }
+                //CODE POUR AJOUTE UNE CATEGORIE
+                if (isset($_POST['form_categorie'])){
 
+                }
+
+
+            }
 
 
 
@@ -166,7 +175,7 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
                             <input type="checkbox"  name="dispo" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label"  for="exampleCheck1">Disponible</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                        <button type="submit" name="form_produit" class="btn btn-primary">Ajouter</button>
                     </form>
                 </div>
             </div>
@@ -175,33 +184,47 @@ if($_SESSION['role'] == 'ROLE_ADMIN' or $_SESSION['role']=='ROLE_VENDOR')
             <div class="card mt-4">
                 <h5 class="card-header">Gérer les catégories</h5>
                 <div class="card-body">
-                    <?php
-                    foreach($categories as $category) {
-
-                    }
-                    ?>
+                    <ul class="list-group list-group-flush">
+                            <?php
+                            foreach($categories as $category) {
+                                echo '<li class="list-group-item"><div class="row"><div class="col-md-8">'.$category['category'].'</div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$category['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id='.$category['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
+                            }
+                            ?>
+                    </ul>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h6>Ajoute une Catégorie</h6>
+                            <!-- FORMULAIRE POUR AJOUTER UNE CATEGORIE -->
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Nom de la nouvelle Catégorie</label>
+                                    <input type="text" name="name_categorie" class="form-control" >
+                                </div>
+                                <button type="submit" name="form_categorie" class="btn btn-primary">Ajouter</button>
+                            </form>
+                    </div>
                 </div>
             </div>
             <br>
             <br>
             <!--  LISTE D'articles  -->
-            <div class="card" ">
-            <h5 class="card-title">Liste des Produits</h5>
-            <ul class="list-group list-group-flush">
-                <?php
-                //requete pour lister les produits
-                //seulement va me montrer les produits disponibles
-                $rsl= $connexion->query('SELECT * FROM product');
-                $productos = $rsl ->fetchAll();
-                foreach ($productos as $product){
-                    echo '<li class="list-group-item"><div class="row"><div class="col-md-8"><a href="voir_produit.php">'.$product['name'].'</a></div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$product['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id='.$product['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
-                }
-                ?>
-            </ul>
-
-        </div>
-
-        </div>
+            <div class="card mt-4">
+                <h5 class="card-header">Liste de Produits</h5>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <?php
+                        //requete pour lister les produits
+                        //seulement va me montrer les produits disponibles
+                        $rsl= $connexion->query('SELECT * FROM product');
+                        $productos = $rsl ->fetchAll();
+                        foreach ($productos as $product){
+                            echo '<li class="list-group-item"><div class="row"><div class="col-md-8"><a href="voir_produit.php">'.$product['name'].'</a></div> <div class="text-right col-md-4" ><a href="modifier_produit.php?id='.$product['id'].'"> Modifier <i class="fas fa-edit"></i></a>   |  <a href="form_ajouter_article.php?id='.$product['id'].'"> Supprimer <i class="fas fa-trash-alt"></i></a></div></div></li>';
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
 <?php
 
 
